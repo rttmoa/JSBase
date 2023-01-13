@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <script>  
+
+       function Product(name, price) {
+            this.name = name;
+            this.price = price;
+        } 
+        // // 调用父构造函数的call方法来实现继承
+        function Food(name, price) {
+            Product.call(this, name, price);
+            this.category = 'food';
+        } 
+        function Toy(name, price) {
+            Product.call(this, name, price);
+            this.category = 'toy';
+        }
+
+        var cheese = new Food('feta', 5);
+        console.log(cheese) // Food {name: 'feta', price: 5, category: 'food'}
+
+        var fun = new Toy('robot', 40);
+        console.log(fun) // Toy {name: 'robot', price: 40, category: 'toy'}
+        console.log('----------------Product-------------------')
+
+
+
+
+
+
+        // 普通对象
+        var length1 = 10
+        let length2 = 20 
+        var userName = "userName"
+        var userAge = "userAge"
+        var myObject = {
+            firstName: "John",
+            lastName: "Doe",
+            leng1: this.length1,
+            leng2: this.length2, 
+            fullName: function () {
+                console.log('fullName',this.leng1) // 10
+                console.log('fullName',this.firstName + " " + this.lastName) // John Doe
+            },
+            fullName2: () => {
+                console.log('fullName2',this.length1) // 10 获取var声明 -- this指向window、不指向对象内部
+                console.log('fullName2',this.length2) // Window 获取不到let声明
+            },
+            myFun(){
+                console.log(this.userName, this.userAge)
+            },
+            myFunT: myFunT = (arg1, arg2) => {
+                console.log(this.userName+":"+arg1, this.userAge+":"+arg2)
+            } 
+        }
+        myObject.fullName()  
+        myObject.fullName2()  
+        console.log(myObject.leng1) 
+        console.log(myObject.leng2) 
+        console.log('---------------myObject--------------------') 
+
+
+
+
+        // myFun函数this指向内部、userName获取不到
+        myObject.myFun() // undefined undefined
+        myObject.myFun.call(this) // userName userAge
+        myObject.myFun.apply(this) // userName userAge
+        myObject.myFun.bind(this)() // userName userAge
+
+        var DB = {userName: "newUser", userAge: "newAge"}
+        myObject.myFun.call(DB) // newUser newAge
+        myObject.myFun.apply(DB) // newUser newAge
+        myObject.myFun.bind(DB)() // newUser newAge
+
+
+        // myFun函数this指向Window、userName可获取
+        myObject.myFunT("","") // userName: userAge:
+        myObject.myFunT.call(DB, "AAA", 111) // userName:AAA userAge:111
+        myObject.myFunT.apply(DB, ["BBB", 222]) // userName:BBB userAge:222
+        myObject.myFunT.bind(DB, "CCC", 333)() // userName:CCC userAge:333 
+        console.log('---------------call、apply、bind--------------------') 
+
+
+
+
+        
+        // call() 和 apply() 是预定义的函数方法。 两个方法可用于调用函数，两个方法的第一个参数必须是对象本身。 
+        function myFunction(a, b) {
+            this.JSON = a;
+            this.JAVA = b;
+            var reply = [b || this.lastName, "+", a || this.firstName].join('+')
+            return reply
+        }
+        // call
+        myObject = myFunction.call(myObject, "wenlong111", "zhang111");
+        console.log(myObject) // zhang111+++wenlong111
+        // apply    
+        myObject2 = myFunction.apply(myObject, ["wenlong222", "zhang222"]);
+        console.log(myObject2) // zhang222+++wenlong222
+        // bind：
+        // react中 使用bind修改this的指向 onClick={this.clickFn.bind(this)}
+
+        // 构造函数:
+        // 构造函数的调用会创建一个新的对象。新对象会继承构造函数的属性和方法。 
+        const mp = new myFunction("JSON", "JAVA")
+        console.log(mp) // myFunction {JSON: 'JSON', JAVA: 'JAVA'}
+        console.log('-----------------myFunction------------------')
+        
+
+
+
+
+
+
+
+        // 类实例语法
+        class Person {
+            constructor() {
+              this.name = 'zs'
+              this.age = 18
+            } 
+            name = 'zs'
+            age = 18
+            sayHi() { /// 这个 say 在 原型链上 不在 Person 上
+                console.log('sayHi')
+                console.log(this.age)
+            }
+            say = () => { ///也叫类实例  === this.say = () => {}
+                console.log('say')
+                console.log(this.age)
+            }
+            static play(){
+                console.log('play', this.age) // undefined
+            }
+        }
+
+        const p = new Person()
+        console.log(p) //  {name: 'zs', age: 18, say: ƒ}
+        p.name // (property) Person.name: string
+        p.say() // (property) Person.say: () => void
+        p.sayHi() // (method) Person.sayHi(): void
+        Person.play() // (method) Person.play(): void
+        console.log(Person.say)
+        console.log(Person.sayHi)
+        console.log('---------------ES^--------------------')
+    </script>
+</body>
+
+</html>
