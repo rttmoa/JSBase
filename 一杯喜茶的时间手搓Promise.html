@@ -41,17 +41,19 @@
             })  
         }
         // console.log(RunPromise(1, 1000).then(v => console.log(v)).catch(e => console.log(e)))
-        RunPromise(22, 20000).then(res => {
-            // console.log("then的第一个参数执行");
-            // console.log(res);
-            // console.log(newres);
-        }, error => {
-            // console.log("then的第二个参数执行");
-            // console.log(error);
-        }).catch(error => {
-            // console.log("error");
-            // console.log(error);
-        });
+
+        // RunPromise(22, 20000).then(res => {
+        //     // console.log("then的第一个参数执行");
+        //     // console.log(res);
+        //     // console.log(newres);
+        // }, error => {
+        //     // console.log("then的第二个参数执行");
+        //     // console.log(error);
+        // }).catch(error => {
+        //     // console.log("error");
+        //     // console.log(error);
+        // });
+
         // 上面例子中，RunPromise()调用resolve，then()的第一个参数对应回调，状态从pending改成fulfilled，且状态不会再改变。
         // 在then()中，newres这个变量尚未定义，因此程序出错，其异常在catch()被捕获。
         // 一般来说，then()使用第一个参数即可，因为catch()跟then()的第二个参数一样，还能捕获到异常
@@ -59,10 +61,198 @@
 
 
 
+        // ES6声明构造函数
+        class MyPromise {
+            constructor(implement) {
+                this.status = "pending"; // 初始化状态为pending
+                this.res = null; // 成功时的值
+                this.error = null; // 失败时的值
+                this.resolveCallbacks = []; // 成功时回调的处理函数
+                this.rejectCallbacks = []; // 失败时回调的处理函数
+                const resolve = res => {
+                    // resolve的作用只是将状态从pending转为fulfilled，并将成功时的值存在this.res
+                    if (this.status === "pending") {
+                        this.status = "fulfilled";
+                        this.res = res;
+                        this.resolveCallbacks.forEach(fn => fn()) // 循环执行成功处理函数
+                    }
+                };
+                const reject = error => {
+                    // reject的作用只是将状态从pending转为rejected，并将失败时的值存在this.error
+                    if (this.status === "pending") {
+                        this.status = "rejected";
+                        this.error = error;
+                        this.rejectCallbacks.forEach(fn => fn()) // 循环执行失败处理函数
+                    }
+                };
+                // 程序报错时会执行reject，所以在这里加上错误捕获，直接执行reject
+                try {
+                    implement(resolve, reject);
+                } catch (err) {
+                    reject(err);
+                }
+            }
+            then(onFulfilled, onRejected){
+                // 当状态为fulfilled时，调用onFulfilled并传入成功时的值
+                if(this.status === "fulfilled"){
+                    onFulfilled(this.res)
+                }
+                // 当状态为rejected时，调用onRejected并传入成功时的值
+                if(this.status === "rejected"){
+                    onRejected(this.error)
+                }
+                // 当状态为pending时，说明这时还没有调用到resolve或reject
+                // 在这里把成功函数和失败函数存至相应的数组中，不做执行操作只做存储操作
+
+                // resolve在setTimeout()中使用，这时候在then()里，状态还是pending，那就没办法调用到onFulfilled
+
+                if (this.status === "pending") {
+                    this.resolveCallbacks.push(() => onFulfilled(this.res));
+                    this.rejectCallbacks.push(() => onRejected(this.error));
+                }
+            }
+        } 
+        // new Promise((resolve, reject) => {})
+
+        // const mp = new MyPromise(function(res, rej) {  res(111) })
+        // console.log(mp)
         
+        // new MyPromise((resolve, reject) => {
+        //     console.log("开始执行");
+        //     setTimeout(() => {
+        //         resolve("执行resolve");
+        //     }, 2000);
+        // }).then(res => console.log(res));
 
 
 
+
+
+
+
+
+
+        //  实现链式调用: https://segmentfault.com/a/1190000022294224#comment-area
+        class MyPromise2 {
+            constructor(implement) {
+                this.status = "pending"; // 初始化状态为pending
+                this.res = null; // 成功时的值
+                this.error = null; // 失败时的值
+                this.resolveCallbacks = []; // 成功时回调的处理函数
+                this.rejectCallbacks = []; // 失败时回调的处理函数
+                const resolve = res => {
+                    // resolve的作用只是将状态从pending转为fulfilled，并将成功时的值存在this.res
+                    if (this.status === "pending") {
+                        this.status = "fulfilled";
+                        this.res = res;
+                        this.resolveCallbacks.forEach(fn => fn()) // 循环执行成功处理函数
+                    }
+                };
+                const reject = error => {
+                    // reject的作用只是将状态从pending转为rejected，并将失败时的值存在this.error
+                    if (this.status === "pending") {
+                        this.status = "rejected";
+                        this.error = error;
+                        this.rejectCallbacks.forEach(fn => fn()) // 循环执行失败处理函数
+                    }
+                };
+                // 程序报错时会执行reject，所以在这里加上错误捕获，直接执行reject
+                try {
+                    implement(resolve, reject);
+                } catch (err) {
+                    reject(err);
+                }
+            }
+            then(onFulfilled, onRejected) {
+                // 如果onRejected不是函数，就直接抛出错误
+                onFulfilled = typeof onFulfilled === "function" ? onFulfilled : res => res;
+                onRejected = typeof onRejected === "function" ? onRejected : err => { throw err; };
+                const nextPromise = new MyPromise((resolve, reject) => {
+                    function RecursionPromise(nextPromise, x, resolve, reject) {
+                        if (nextPromise === x) return false;
+                        let flag;
+                        if (x !== null && (typeof x === "object" || typeof x === "function")) {
+                            try {
+                                let then = x.then;
+                                if (typeof then === "function") {
+                                    then.call(x, y => {
+                                        if (flag) return false;
+                                        flag = true;
+                                        // 这里说明Promise对象resolve之后的结果仍然是Promise，那么继续递归解析
+                                        RecursionPromise(nextPromise, y, resolve, reject);
+                                    }, error => {
+                                        if (flag) return false;
+                                        flag = true;
+                                        reject(error);
+                                    });
+                                } else {
+                                    resolve(x);
+                                }
+                            } catch (e) {
+                                if (flag) return false;
+                                flag = true;
+                                reject(e);
+                            }
+                        } else {
+                            resolve(x);
+                        }
+                    }
+                    if (this.status === "fulfilled") {
+                        // 解决异步问题
+                        setTimeout(() => {
+                            const x = onFulfilled(this.res);
+                            RecursionPromise(nextPromise, x, resolve, reject);
+                        }, 0);
+                    }
+                    if (this.status === "rejected") {
+                        setTimeout(() => {
+                            const x = onRejected(this.error);
+                            RecursionPromise(nextPromise, x, resolve, reject);
+                        }, 0);
+                    }
+                    if (this.status === "pending") {
+                        this.resolveCallbacks.push(() => {
+                            setTimeout(() => {
+                                const x = onFulfilled(this.res);
+                                RecursionPromise(nextPromise, x, resolve, reject);
+                            }, 0);
+                        });
+                        this.rejectCallbacks.push(() => {
+                            setTimeout(() => {
+                                const x = onRejected(this.error);
+                                RecursionPromise(nextPromise, x, resolve, reject);
+                            }, 0);
+                        });
+                    }
+                });
+                return nextPromise;
+            }
+        }
+
+        new MyPromise2((resolve, reject) => {
+            console.log("开始执行");
+            setTimeout(() => {
+                resolve("执行resolve");
+            }, 1000); 
+        }).then(res => {
+            console.log(res)
+            
+            new MyPromise2((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("执行resolve2222");
+                }, 1000); 
+            }).then(res2 => {
+                console.log(res2)
+                
+                new MyPromise2((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve("执行resolve333333");
+                    }, 1000); 
+                }).then(res3 => {
+                    console.log(res3) 
+                })
+            })
+        }) 
 
     </script>
 </body>
