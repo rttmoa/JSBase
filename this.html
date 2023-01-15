@@ -76,6 +76,31 @@
 
 
 
+        // 对象
+        var names = "caibaojian.com"
+        var Obj = {
+            names: "kang",
+            pro: {
+                names: "Michael",
+                getName: function() {
+                    return this.names
+                }   
+            },
+            props: function() {
+                return function() {
+                    return this.names
+                }
+            }
+        }
+        console.log(Obj.pro.getName()) // Michael
+
+        var people = Obj.pro.getName
+        console.log(people()) // caibaojian.com     如果在严格模式下=undefined
+
+        console.log(Obj.props()()) // caibaojian.com
+        console.log('----------------Obj-------------------')
+
+
 
 
         // 普通对象
@@ -102,48 +127,6 @@
         console.log('---------------普通对象--------------------') 
 
 
-
-
-
-
-
-        var userName = "userName"
-        var userAge = "userAge"
-        let changeObj = {
-            myFun(){
-                console.log(this.userName, this.userAge)
-            },
-            myFunT: myFunT = (arg1, arg2) => {
-                console.log(this.userName+":"+arg1, this.userAge+":"+arg2)
-            },
-            add(cc, dd){console.log(this.aa + this.bb + cc + dd)}
-        }
-        changeObj.add.call({aa: 3, bb: 4}, 5, 6)  // 18
-        changeObj.add.apply({aa: 3, bb: 4}, [5, 6]) // 18
-
-        // // myFun函数this指向内部、userName获取不到
-        // myObject.myFun() // undefined undefined
-        // myObject.myFun.call(this) // userName userAge
-        // myObject.myFun.apply(this) // userName userAge
-        // myObject.myFun.bind(this)() // userName userAge
-
-        // var DB = {userName: "newUser", userAge: "newAge"}
-        // myObject.myFun.call(DB) // newUser newAge
-        // myObject.myFun.apply(DB) // newUser newAge
-        // myObject.myFun.bind(DB)() // newUser newAge
-
-
-        // // myFun函数this指向Window、userName可获取
-        // myObject.myFunT("","") // userName: userAge:
-        // myObject.myFunT.call(DB, "AAA", 111) // userName:AAA userAge:111
-        // myObject.myFunT.apply(DB, ["BBB", 222]) // userName:BBB userAge:222
-        // myObject.myFunT.bind(DB, "CCC", 333)() // userName:CCC userAge:333 
-        console.log('---------------call、apply、bind--------------------') 
-
-
-
-
-        
         // call() 和 apply() 是预定义的函数方法。 两个方法可用于调用函数，两个方法的第一个参数必须是对象本身。 
         function myFunction(a, b) {
             this.JSON = a;
@@ -165,12 +148,59 @@
         const mp = new myFunction("JSON", "JAVA")
         console.log(mp) // myFunction {JSON: 'JSON', JAVA: 'JAVA'}
         console.log('-----------------myFunction------------------')
+
+
+
+
+
+
+
+
+        var userName = "Dili"
+        var userAge = 33
+        let changeObj = {
+            userName: "Yangmi",
+            // userAge: 44,
+            myFun(){
+                // console.log(this.userName, this.userAge)
+            },
+            myFunT: myFunT = (arg1, arg2) => {
+                // console.log(this.userName+":"+arg1, this.userAge+":"+arg2)
+            },
+            add(cc, dd){
+                // console.log(this.aa + this.bb + cc + dd)
+            }
+        }
+        changeObj.add.call({aa: 3, bb: 4}, 5, 6)  // 18
+        changeObj.add.apply({aa: 3, bb: 4}, [5, 6]) // 18 
+
+        // // myFun函数this指向内部、userAge获取不到
+        changeObj.myFun() // Yangmi undefined
+        changeObj.myFun.call(this) // Dili 33
+        changeObj.myFun.apply(this) // Dili 33
+        changeObj.myFun.bind(this)() // Dili 33
+
+        var DB = {userName: "henhen", userAge: 99}
+        changeObj.myFun.call(DB) // henhen 99
+        changeObj.myFun.apply(DB) // henhen 99
+        changeObj.myFun.bind(DB)() // henhen 99
+
+
+        // // myFun函数内的this指向Window、userName可获取
+        changeObj.myFunT("","") // Dili: 33:
+        changeObj.myFunT.call(DB, "吃饭", 111) // Dili:吃饭 33:111
+        changeObj.myFunT.apply(DB, ["睡觉", 222]) // Dili:吃饭 33:111
+        changeObj.myFunT.bind(DB, "抽烟", 333)() // Dili:吃饭 33:111 
+        console.log('---------------call、apply、bind--------------------') 
+
+
+
+
+        
+       
         
 
-
-
-
-
+ 
 
 
         // 类实例语法
@@ -203,6 +233,8 @@
         console.log(Person.say)
         console.log(Person.sayHi)
         console.log('---------------ES^--------------------')
+
+        
     </script>
 </body>
 
