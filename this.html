@@ -12,6 +12,36 @@
     
     <script>  
 
+
+        // 全局上下文
+        this.a = 37;
+        // console.log(this) // {C, DB, Food, Toy, a, c, length, length1, o, myFunT, myObject,myObject2} 
+        // console.log(this.document === document) // true
+        // console.log(this === window) // true
+
+
+        // 函数上下文
+        function func() {return this} 
+        console.log(func() === window) // true
+        console.log('----------------全局上下文-------------------')
+
+
+
+        // 原型链中的this
+        var o = {
+            fn: function() {
+                return this.aa + this.bb
+            }
+        }
+        var op = Object.create(o)
+        op.aa = 2 
+        op.bb = 4
+        console.log(op.fn()) // 6
+        console.log('----------------原型链-------------------')
+
+
+
+       // 构造函数中的this
        function Product(name, price) {
             this.name = name;
             this.price = price;
@@ -25,12 +55,22 @@
             Product.call(this, name, price);
             this.category = 'toy';
         }
+        function C() {
+            this.aa = 22
+            this.bb = 33
+            return {
+                aa: 44
+            }
+        }
 
         var cheese = new Food('feta', 5);
         console.log(cheese) // Food {name: 'feta', price: 5, category: 'food'}
 
         var fun = new Toy('robot', 40);
         console.log(fun) // Toy {name: 'robot', price: 40, category: 'toy'}
+
+        var c = new C();
+        console.log(c)
         console.log('----------------Product-------------------')
 
 
