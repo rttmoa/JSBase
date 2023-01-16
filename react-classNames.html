@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function classNames(obj) {
+            // console.log(Object.keys(obj)) // ['box', 'red', 'pink']
+            // console.log(Object.keys(obj).filter(key => obj[key])) // ['box', 'pink']
+            // console.log(Object.keys(obj).filter(key => obj[key]).join('')) // boxpink
+            // console.log(Object.keys(obj).filter(key => obj[key]).join(' ')) // box pink
+             
+        }
+
+
+        function classNames(obj) {
+            return Object.keys(obj)
+                .filter(key => obj[key])
+                .join(' ')
+        }
+
+        const isRed = false;
+        const isPink = true;
+        const res = classNames({
+            box: true,
+            red: isRed,
+            pink: isPink
+        })
+        console.log(res) // box pink
+    </script>
+</body>
+</html>
