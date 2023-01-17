@@ -192,6 +192,20 @@
         // what 把一大段行为拆分成多个顺序执行的阶段
         // where 当看见一段代码在同时处理两件不同的事， 可以把它拆分成各自独立的模块， 因为这样到了需要修改的时候， 就可以单独处理每个模块
 
+        // ==================重构前==================
+        function priceOrder(product, quantity, shippingMethod) {
+            const basePrice = product.basePrice * quantity;
+            
+            const discount = Math.max(quantity - product.discountThreshold, 0) * product.basePrice * product.discountRate;
+            
+            const shippingPerCase = (basePrice > shippingMethod.discountThreshold) ? shippingMethod.discountedFee : shippingMethod.feePerCase;
+            
+            const shippingCost = quantity * shippingPerCase;
+            
+            const price = basePrice - discount + shippingCost;
+            return price;
+        }
+        // ==================重构后==================
         
 
 
