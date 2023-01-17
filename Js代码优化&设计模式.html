@@ -9,7 +9,9 @@
 <body>
     
 
+    <!-- 
 
+     -->
 
     <script>
 
@@ -232,9 +234,40 @@
         //     该行为可能会被质疑，因为它会迫使你执行两次甚至多次循环，实际情况是，即使处理的列表数据更多一些，循环本身也很少成为性能瓶颈，
         //     更何况拆分出循环来通常还使一些更强大的优化手段变得可能。
 
-        
+        // ==================重构前==================
+        var people = [
+            { age: 20, salary: 10000 },
+            { age: 21, salary: 15000 },
+            { age: 22, salary: 18000 }
+        ]
 
+        var youngest = people[0] ? people[0].age : Infinity;
+        var totalSalary = 0;
+        for (const p of people) {
+            // 查找最年轻的人员
+            if (p.age < youngest) youngest = p.age;
+            // 计算总薪水
+            totalSalary += p.salary;
+        }
+        console.log(`youngestAge: ${youngest}, totalSalary: ${totalSalary}`);
 
+        // ==================重构前==================
+        var people = [
+            { age: 20, salary: 10000 },
+            { age: 21, salary: 15000 },
+            { age: 22, salary: 18000 }
+        ] 
+        var totalSalary = 0;
+        for (const p of people) { 
+            // 计算总薪水
+            totalSalary += p.salary;
+        }
+        var youngest = people[0] ? people[0].age : Infinity;
+        for (const p of people) {
+            // 查找最年轻的人员
+            if (p.age < youngest) youngest = p.age;
+        }
+        console.log(`youngestAge: ${youngest}, totalSalary: ${totalSalary}`);
 
 
 
