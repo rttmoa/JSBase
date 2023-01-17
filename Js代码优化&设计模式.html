@@ -10,7 +10,17 @@
     
 
     <!-- 
-
+        一、提炼函数
+        二、函数参数化
+        三、使用策略模式替换“胖”分支
+        四、提炼变量
+        五、内联变量
+        六、封装变量
+        七、拆分阶段
+        八、拆分循环
+        九、拆分变量
+        十、分解条件表达式
+        十三、将查询函数和修改函数分离
      -->
 
     <script>
@@ -312,7 +322,157 @@
 
 
 
+
+        // 九、拆分变量
+        // what 将一个变量拆分成两个或多个变量
+        // where 如果变量承担多个责任， 它就应该被替换为多个变量， 每个变量只承担一个责任。
+
+        // ==================重构前==================
+        let temp = 2 * (height + width);
+        console.log(temp);
+        temp = height * width;
+        console.log(temp);
+
+        // ==================重构后==================
+        const perimeter = 2 * (height + width);
+        console.log(perimeter);
+        const area = height * width;
+        console.log(area);
+
+
+
+
+        // 十、分解条件表达式
+        // what 将条件表达式提炼成函数
+        // where 在带有复杂条件逻辑的函数中，往往可以将原函数中对应的代码改为调用新函数。
+
+        // ==================重构前==================
+        // 计算一件商品的总价，该商品在冬季和夏季的单价是不同的
+        if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd))
+        charge = quantity * plan.summerRate;
+        else
+        charge = quantity * plan.regularRate + plan.regularServiceCharge;
+
+        // ==================重构后==================
+        if (summer())
+            charge = summerCharge();
+        else
+            charge = regularCharge();
+
+        function summer() {
+            return !aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd);
+        }
+        function summerCharge() {
+            return quantity * plan.summerRate;
+        }
+        function regularCharge() {
+            return quantity * plan.regularRate + plan.regularServiceCharge;
+        }
         
+        // ==================进一步优化（使用三元运算符）================== 
+        charge = summer() ? summerCharge() : regularCharge();
+        function summer() {
+            return !aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd);
+        }
+        function summerCharge() {
+            return quantity * plan.summerRate;
+        }
+        function regularCharge() {
+            return quantity * plan.regularRate + plan.regularServiceCharge;
+        }
+
+
+
+
+
+
+        // 十一、合并条件表达式
+        // 将多个条件表达式合并
+        // ==================重构前==================
+        if (anEmployee.seniority < 2) return 0;
+        if (anEmployee.monthsDisabled > 12) return 0;
+        if (anEmployee.isPartTime) return 0;
+
+        // ==================重构后==================
+        if (isNotEligableForDisability()) return 0;
+        function isNotEligableForDisability() {
+            return ((anEmployee.seniority < 2)
+                    || (anEmployee.monthsDisabled > 12)
+                    || (anEmployee.isPartTime));
+        }
+
+
+
+
+
+
+        // 十二、以卫语句取代嵌套条件表达式
+        // ==================重构前==================
+        function payAmount(employee) {
+            let result;
+            if(employee.isSeparated) {
+                result = {amount: 0, reasonCode:"SEP"};
+            }
+            else {
+                if (employee.isRetired) {
+                    result = {amount: 0, reasonCode: "RET"};
+                }
+                else {
+                    result = someFinalComputation();
+                }
+            }
+            return result;
+        }
+
+        // ==================重构后==================
+        function payAmount(employee) {
+            if (employee.isSeparated) return {amount: 0, reasonCode: "SEP"};
+            if (employee.isRetired) return {amount: 0, reasonCode: "RET"};
+            return someFinalComputation();
+        }
+
+
+
+
+
+        // 十三、将查询函数和修改函数分离
+        // what 将查询动作从修改动作中分离出来的方式
+        // where 如果遇到一个“既有返回值又有副作用”的函数，此时可以将查询动作从修改动作中分离出来。
+
+        // ==================重构前==================
+        function alertForMiscreant (people) {
+            for (const p of people) {
+                if (p === "Don") {
+                    setOffAlarms();
+                    return "Don";
+                }
+                if (p === "John") {
+                    setOffAlarms();
+                    return "John";}
+            }
+            return "";
+        }
+        // 调用方
+        var found = alertForMiscreant(people);
+
+        // ==================重构后==================
+        function findMiscreant (people) {
+            for (const p of people) {
+                if (p === "Don") {
+                    return "Don";
+                }
+                if (p === "John") {
+                    return "John";
+                }
+            }
+            return "";
+        }
+        function alertForMiscreant (people) {
+            if (findMiscreant(people) !== "") setOffAlarms();
+        }
+        // 调用方
+        var found = findMiscreant(people);
+        alertForMiscreant(people);
 
 
 
