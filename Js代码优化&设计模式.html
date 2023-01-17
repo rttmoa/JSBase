@@ -301,7 +301,9 @@
         ]  
         console.log(`youngestAge: ${youngestAgv()}, totalSalary: ${totalSalary()}`);
         function youngestAgv() {
-             
+            return Math.min([20, 22, 12])
+            return Math.min(...[20, 22, 12])
+            return Math.min(...peron.map(value => value.age))
         }
         function totalSalary() {
             return people.reduce((prev, curr) => prev + curr.salary, 0) // 初始值+每一项的当前值
@@ -310,7 +312,7 @@
 
 
 
-
+        
 
 
 
