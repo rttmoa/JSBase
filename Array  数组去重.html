@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        // 一、普通数据
+        const arr = [
+            { uname: "张三333", age: 12 },
+            { uname: "张三222", age: 12 },
+            { uname: "张三222", age: 12 },
+            { uname: "张三111", age: 12 },
+        ];
+
+
+        // 1.先利用ES6语法Set将数组去重，之后再原数组比较长度，若长度小于原数组，则说明数组有重复值
+        // const newArrLength = new Set(arr.map(value => value.name)).size // 1 ?
+        const newArrLength = new Set(arr.map(value => value.uname)).size;   
+        const Arrlength = arr.length;
+        if(Arrlength > newArrLength) {console.log("重复")}
+
+
+
+        // 2.先将数组转换成字符串，再遍历数组，在字符串中移除当前的数组元素之后还能找到该元素，则说明数组有重复值。
+
+
+
+
+        // 3.利用findIndex或者indexOf查到的下标和当前循环的下标对比是否相等
+        const newArr = arr.map(value => value.uname)
+        // newArr: ['张三333', '张三222', '张三222', '张三111']
+        
+        // 使用indexOf
+        const reNewArr = newArr.some((item, index, array) => {
+            return array.indexOf(item) != index
+        })  
+        if(reNewArr){console.log("重复")} // 查找时、找到第二个张三222时、返回的索引是 1、index为 2
+
+        // 使用findIndex
+        const isRepeat = newArr.some((item, index, array) => {
+            // console.log(array.findIndex(yy => console.log(yy)))
+            return array.findIndex(y => {
+                return y === item
+            }) != index
+        })
+        console.log(isRepeat)
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
