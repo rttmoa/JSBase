@@ -251,7 +251,7 @@
         }
         console.log(`youngestAge: ${youngest}, totalSalary: ${totalSalary}`);
 
-        // ==================重构前==================
+        // ==================重构后==================
         var people = [
             { age: 20, salary: 10000 },
             { age: 21, salary: 15000 },
@@ -269,12 +269,31 @@
         }
         console.log(`youngestAge: ${youngest}, totalSalary: ${totalSalary}`);
 
+        // ==================提炼函数==================
+        var people = [
+            { age: 20, salary: 10000 },
+            { age: 21, salary: 15000 },
+            { age: 22, salary: 18000 }
+        ]  
+        console.log(`youngestAge: ${youngestAgv()}, totalSalary: ${totalSalary()}`);
+        function youngestAgv() {
+            var youngest = people[0] ? people[0].age : Infinity;
+            for (const p of people) {
+                // 查找最年轻的人员
+                if (p.age < youngest) youngest = p.age;
+            }
+            return youngest
+        }
+        function totalSalary() {
+            var totalSalary = 0;
+            for (const p of people) { 
+                // 计算总薪水
+                totalSalary += p.salary;
+            }
+            return totalSalary
+        }
 
-
-
-
-
-
+        
 
 
 
