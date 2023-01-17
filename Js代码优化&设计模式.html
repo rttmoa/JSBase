@@ -293,9 +293,19 @@
             return totalSalary
         }
 
-        
-
-
+        // ==================使用工具类进一步优化==================
+        var people = [
+            { age: 20, salary: 10000 },
+            { age: 21, salary: 15000 },
+            { age: 22, salary: 18000 }
+        ]  
+        console.log(`youngestAge: ${youngestAgv()}, totalSalary: ${totalSalary()}`);
+        function youngestAgv() {
+             
+        }
+        function totalSalary() {
+            return people.reduce((prev, curr) => prev + curr.salary, 0) // 初始值+每一项的当前值
+        }
 
 
 
