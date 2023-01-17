@@ -85,13 +85,37 @@
         // where 当if-else或者switch-case分支过多时可以使用策略模式将各个分支独立出来
 
         // ==================重构前==================
-        function getPrice(){
-            
+        function getPrice(tag, originPrice){
+            // 新人价
+            if(tag === 'newUser'){
+                return originPrice > 50.1 ? originPrice - 50 : originPrice
+            }
+            // 返场价格
+            if(tag === 'back'){
+                return originPrice > 200 ? originPrice - 50 : originPrice
+            }
+            // 活动价格
+            if(tag === 'activity'){
+                return originPrice > 300 ? originPrice - 100 : originPrice
+            }
         }
         // ==================重构后==================
+        const priceHandler = {
+            newUser(originPrice){
+                return originPrice > 50.1 ? originPrice - 50 : originPrice
+            },
+            back(originPrice){
+                return originPrice > 200 ? originPrice - 50 : originPrice
+            },
+            activity(originPrice){
+                return originPrice > 300 ? originPrice - 100 : originPrice
+            }
+        }
 
+        function getPrice(tag, originPrice){
 
-
+            return priceHandler[tag](originPrice)
+        }
 
 
 
