@@ -349,9 +349,9 @@
         // ==================重构前==================
         // 计算一件商品的总价，该商品在冬季和夏季的单价是不同的
         if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd))
-        charge = quantity * plan.summerRate;
+            charge = quantity * plan.summerRate;
         else
-        charge = quantity * plan.regularRate + plan.regularServiceCharge;
+            charge = quantity * plan.regularRate + plan.regularServiceCharge;
 
         // ==================重构后==================
         if (summer())
@@ -396,9 +396,7 @@
         // ==================重构后==================
         if (isNotEligableForDisability()) return 0;
         function isNotEligableForDisability() {
-            return ((anEmployee.seniority < 2)
-                    || (anEmployee.monthsDisabled > 12)
-                    || (anEmployee.isPartTime));
+            return ((anEmployee.seniority < 2) || (anEmployee.monthsDisabled > 12) || (anEmployee.isPartTime));
         }
 
 
