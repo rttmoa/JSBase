@@ -177,7 +177,11 @@
 
         // ==================重构后==================
         function getDafaultOwner () { return defaultOwner }
-        
+        function setDefaultOwner (arg) { defaultOwner = arg }
+        // 访问
+        spaceship.owner = getDafaultOwner();
+        // 赋值
+        setDefaultOwner( { firstName: "rebecca", lastName: "Parsons"} )
 
 
 
