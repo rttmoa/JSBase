@@ -111,6 +111,7 @@
             lastName: "Doe",
             leng1: this.length1,
             leng2: this.length2, 
+            // ES5写法
             fullName: function () {
                 console.log('fullName',this.leng1) // 10
                 console.log('fullName',this.firstName + " " + this.lastName) // John Doe
@@ -161,6 +162,7 @@
         let changeObj = {
             userName: "Yangmi",
             // userAge: 44,
+            // ES6写法
             myFun(){
                 // console.log(this.userName, this.userAge)
             },
