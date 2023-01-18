@@ -39,14 +39,8 @@
         const Arrlength = arr.length;
         if(Arrlength > newArrLength) {console.log("重复")}
 
-
-
-        // 2.先将数组转换成字符串，再遍历数组，在字符串中移除当前的数组元素之后还能找到该元素，则说明数组有重复值。
-
-
-
-
-        // 3.利用findIndex或者indexOf查到的下标和当前循环的下标对比是否相等
+  
+        // 2.利用findIndex或者indexOf查到的下标和当前循环的下标对比是否相等
         const newArr = arr.map(value => value.uname)
         // newArr: ['张三333', '张三222', '张三222', '张三111']
         
