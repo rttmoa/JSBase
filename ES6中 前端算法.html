@@ -22,7 +22,7 @@
         f1()
         
 
-        // 数组去重 forEach
+// 数组去重 forEach
         {
             let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
             
@@ -37,7 +37,7 @@
         }
 
 
-        // 数组去重 filter
+// 数组去重 filter
         {
             let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
 
@@ -50,7 +50,7 @@
         }
 
 
-        // 数组去重 set
+// 数组去重 set
         {
             let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
 
@@ -60,7 +60,7 @@
         }
 
 
-        // 翻转字符串
+// 翻转字符串
         function f5() {
             let str = "Hello World" 
 
@@ -72,7 +72,7 @@
         // f5()
 
 
-        // 数组中最大差值 forEach
+// 数组中最大差值 forEach
         {
             let arr = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
             
@@ -81,17 +81,49 @@
             arr.forEach(value => {
                 value < min ? min = value : min;
                 value > max ? max = value : max
-            })
-            console.log(min) // -3
-            console.log(max) // 71
+            }) 
             let res = max - min; // 71 - (-3)
+
+            // console.log(res) // 74
+        }
+
+
+// 数组中最大差值 max,min
+        {
+            let arr = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
+            
+            let min = Math.min(...arr)
+            let max = Math.max(...arr) 
+            let res = max - min; // 71 - (-3)
+
             console.log(res) // 74
+        }
+
+        
+
+// 不借助临时变量，进行两个整数的交换
+// 1、数组解构
+// 2、算数运算(加减)
+// 3、逻辑运算(异或)
+
+
+
+// 冒泡排序
+        {
+
+        }
+
+
+
+// 随机数生成
+        {
+            
         }
 
 
 
 
-        
+
 
 
         console.log(1)
