@@ -90,19 +90,39 @@
                 }
 
                 // async/await
-                async function getItems() {
-                    try {
-                        // const user = await getUser()
-                        // const order = await getOrderByUser(user)
-                        // const items = await getOrderItemsByOrder(order)
-                        // return items
-                    } catch (error) {
-                        // 在这里处理错误，建议返回某个值或者重新抛出错误
+                {
+                    async function getItems() {
+                        try {
+                            // const user = await getUser()
+                            // const order = await getOrderByUser(user)
+                            // const items = await getOrderItemsByOrder(order)
+                            // return items
+                        } catch (error) {
+                            // 在这里处理错误，建议返回某个值或者重新抛出错误
+                        }
                     }
+                    getItems().then(item => {
+                        // 处理排序后的成员
+                    })
                 }
-                getItems().then(item => {
-                    // 处理排序后的成员
-                })
+                // async/await代码优化
+                { 
+                    // // good
+                    // function fetch() {
+                    //     return (
+                    //         fetchData().then(() => { 
+                    //             return "done"
+                    //         })
+                    //     )
+                    // }
+                    
+                    // // better
+                    // async function fetch() {
+                    //     await fetchData()
+                    //     return "done"
+                    // };
+                }
+
             }
         }
         
