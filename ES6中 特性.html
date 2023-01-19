@@ -57,13 +57,30 @@
                 })
             }
             {
-                // promise 链式调用
-                // getUser()
-                //     .then(getOrderByUser)
-                //     .then(getOrderItemsByOrder)
-                //     .then(orderItems => {
-                //         // 处理排序后的成员
-                //     })
+                // promise 代码优化
+                { 
+                    // // bad
+                    // request(url, function(err, res, body) {
+                    //     if (err) handleError(err);
+                    //     fs.writeFile('1.txt', body, function(err) {
+                    //         request(url2, function(err, res, body) {
+                    //             if (err) handleError(err)
+                    //         })
+                    //     })
+                    // });
+                    
+                    // // good
+                    // request(url)
+                    // .then(function(result) {
+                    //     return writeFileAsynv('1.txt', result)
+                    // })
+                    // .then(function(result) {
+                    //     return request(url2)
+                    // })
+                    // .catch(function(e){
+                    //     handleError(e)
+                    // });
+                }
 
                 // async/await
                 async function getItems() {
@@ -119,7 +136,7 @@
         // 5.Generator 对象
         // 6.字符串
 // 7. Promise
-        
+
 
 //--------------------------5、Set和Map -> 条件语句的优化--------------------------------
         
