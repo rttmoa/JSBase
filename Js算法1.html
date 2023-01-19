@@ -108,12 +108,17 @@
                 for (let i = 0; i < arr.length; i++) {
                     for (let j = 0; j < arr.length - i - 1; j++) {
                         
-                        console.log(j)
+                        console.log(arr[j+1])
+                        if( arr[j] > arr[j+1] ){ // 前一项 > 后一项  |  把前一项给后一项  |  后一项给前一项
+
+                            let temp = arr[j]
+                            
+                        }
                     }
                     console.log(' ? ')
                 }
             }
-            bubbleSort([1, 2, 3,4])
+            bubbleSort([2,3,1,4])
             console.log(' ')
         }
 
