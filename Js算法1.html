@@ -130,13 +130,56 @@
 
 
 
-// 
+// 快速排序
 
 
 
 
 
+// 找出下列正数组的最大差值
+        {
+            function getMaxProfit(arr) {
 
+                let minPrice = arr[0], maxProfit = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    
+                    let currentValue = arr[i]
+                    // 最小值
+                    minPrice = Math.min(minPrice, currentValue)
+                    
+                    let diff = currentValue - minPrice; // 当前值-最小值=差值
+                    // console.log(diff)
+                    // 最大值
+                    maxProfit = Math.max(maxProfit, diff)
+                }   
+                // console.log(maxProfit)
+            }
+            getMaxProfit([3, 4, 5, 2, 3, 4, 4, 6766, 6, 1])
+        }
+
+
+
+
+
+// 随机生成指定长度的字符串
+        {
+            function randomString(n){
+
+                let res = "";
+                let str = 'abcdefghijklmnopqrstuvwxyz9876543210'; // 36
+                for (let i = 0; i < n; i++) {
+                    
+                    const length = str.length; 
+                     
+                    console.log(str.charAt(3)) // d  传入位置返回字符串
+                    console.log(Math.floor(Math.random() * length)) // [0, 1) * 36 = [0, 35]
+                    
+                    res = res + Math.floor(Math.random() * length)
+
+                }
+            }
+            randomString(10)
+        }
 
 
 
