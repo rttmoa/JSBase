@@ -222,7 +222,26 @@
 
 // 二分查找算法
         {
-            
+            function binarrySearch(arry, start, stop, num) {
+                if (stop - start == 1) {
+                    if (arry[stop] == num) {
+                        return stop;
+                    }
+                    if (arry[start] == num) {
+                        return start;
+                    }
+                    return -1;
+                }
+                var center = Math.floor((stop + start) / 2);
+                if (arry[center] != num) {
+                    return num > arry[center] ? binarrySearch(arry, center, stop, num) : binarrySearch(arry, start, center, num);
+                }
+                return center;
+            }
+            var arry = [1, 3, 4, 6, 8, 9]
+            console.log(binarrySearch(arry, 0, arry.length, 9))
+
+
         }
 
 
