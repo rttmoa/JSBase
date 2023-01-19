@@ -29,6 +29,7 @@
 
 
 
+//--------------------------9个超级实用的 ES6 特性--------------------------------------------------------------------------------------
 //--------------------------异步方案--------------------------------
         {
             {
@@ -82,9 +83,72 @@
         }
         
 
+
+
+//--------------------------ES6完全手册部分--------------------------------------------------------------------------------------
+
+// 1、let和const
+// 2、模板字符串
+// 3、箭头函数
+        // 优先使用箭头函数，不过以下几种情况避免使用
+        // 1. 使用箭头函数定义对象的方法 | var foo = {getValue: () => console.log(this.value)}
+        // 2. 定义原型方法 | Foo.prototype.getValue = () => console.log(this.value)
+        // 3. 作为事件的回调函数 | button.addEventListener('click', () => { });
+// 4. Symbol
+        // 1. 唯一值
+        // 2. 魔术字符串
+        // 3. 私有变量
+// 5. Set 和 Map
+        // 1. 数组去重 | [...new Set(array)] | Array.from(new Set(array))
+        // 2. 条件语句的优化???
+
+
+
+//--------------------------条件语句的优化--------------------------------
         
-
-
+        // 根据颜色找出对应的水果 
+        {
+            // bad
+            {
+                function test(color) {  
+                    switch(color){
+                        case "red":
+                            return ['apple', 'strawberry']
+                        case "yellow":
+                            return ['banana', 'pineapple']
+                        case "purple":
+                            return ['grape', 'plum']
+                        default: 
+                            return []   
+                    }
+                }
+                // test('yellow'); // ['banana', 'pineapple']
+            }
+            // good
+            {
+                const fruitColor = {
+                    red: ['apple', 'strawberry'],
+                    yellow: ['banana', 'pineapple'],
+                    purple: ['grape', 'plum']
+                }
+                function test (color){
+                    return fruitColor[color] || []
+                }
+                // test("yellow")
+            }
+            // better
+            {
+                const fruitColor = new Map()
+                    .set("red", ['apple', 'strawberry'])
+                    .set("yellow", ['banana', 'pineapple'])
+                    .set("purple", ['grape', 'plum'])
+                
+                function test(color) {
+                    return fruitColor.get(color) || []
+                }
+                // console.log(test('red')) // ['apple', 'strawberry']
+            }
+        }
         
 
         
