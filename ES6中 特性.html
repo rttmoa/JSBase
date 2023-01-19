@@ -207,30 +207,81 @@
 
         // 使用 async 代码更加简洁
         {
-            // 例1
+            优化Promise
             {
-                // good
+                // 例1
                 {
-                    function fetch(){
-                        return(
-                            fetchData().then(() => {return "done"})
-                        )
+                    // good
+                    {
+                        function fetch(){
+                            return(
+                                fetchData().then(() => {return "done"})
+                            )
+                        }
+                    }
+                    // better
+                    {
+                        async function fetch(){
+                            await fetchData()
+                            return "done"
+                        }
                     }
                 }
-                // better
-                {
-                    async function fetch(){
-                        await fetchData()
-                        return "done"
-                    }
-                }
-            }
 
-            // 例2
-            {
-                // good
+                // 例2
                 {
-                    
+                    // good
+                    {
+                        function fetch() {
+                            return fetchData().then(data => {
+                                if(data.moreData){
+                                    return fetchAnotherData(data).then(moreData => {
+                                        return moreData
+                                    })
+                                }
+                                else{
+                                    return data
+                                }
+                            })
+                        }
+                    }
+                    // better
+                    {
+                        async function fetch(){
+                            const data = await fetchData()
+                            if(data.moreData){
+                                const moreData = await fetchAnotherData()
+                                return moreData
+                            }
+                            else{
+                                return data
+                            }
+                        }
+                    }
+                }
+
+                // 例3
+                {
+                    // good
+                    {
+                        function fetch(){
+                            return (
+                                fetchData.then(value1 => {
+                                    return fetchMoreData(value1)
+                                }).then(value2 => {
+                                    return fetchMoreData2(value2)
+                                })
+                            )
+                        }
+                    }
+                    // better
+                    {
+                        async function fetch() {
+                            const value1 = await fetchData()
+                            const value2 = await fetchMoreData(value1)
+                            return fetchMoreData2(value2)
+                        }   
+                    }
                 }
             }
         }
