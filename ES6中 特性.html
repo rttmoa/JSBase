@@ -93,17 +93,17 @@
                 {
                     async function getItems() {
                         try {
-                            // const user = await getUser()
-                            // const order = await getOrderByUser(user)
-                            // const items = await getOrderItemsByOrder(order)
-                            // return items
+                            const user = await getUser()
+                            const order = await getOrderByUser(user)
+                            const items = await getOrderItemsByOrder(order)
+                            return items
                         } catch (error) {
                             // 在这里处理错误，建议返回某个值或者重新抛出错误
                         }
                     }
-                    getItems().then(item => {
-                        // 处理排序后的成员
-                    })
+                    // getItems().then(item => {
+                    //     // 处理排序后的成员
+                    // })
                 }
                   
             }
@@ -207,7 +207,7 @@
 
         // 使用 async 代码更加简洁
         {
-            优化Promise
+            // async优化Promise
             {
                 // 例1
                 {
@@ -282,6 +282,60 @@
                             return fetchMoreData2(value2)
                         }   
                     }
+                }
+            }
+
+            // 错误处理
+            {
+                // good
+                {
+                    function fetch() {
+                        try {
+                            fetchData().then(result => {
+                                const data = JSON.parse(result)
+                            }).catch(err => {
+                                console.log(err)
+                            }) 
+                        } catch (error) {
+                            console.log(error)
+                        }
+                    }
+                }
+                // better
+                {
+                    async function fetch(){
+                        try {
+                            const data = JSON.parse(await fetchData())
+                        } catch (error) {
+                            console.log(error)
+                        }
+                    }
+                }
+            }
+
+            // "async" 地狱
+            {
+                // bad
+                {
+                    (async () => {
+                        const getList = await getList();
+                        const getAnotherList = await getAnotherList();
+                    })();
+                }
+                // better
+                {
+                    (async () => {
+                        const listPromise = getList();
+                        const anotherListPromise = getAnotherList();
+                        await listPromise;
+                        await anotherListPromise;
+                    })(); 
+                }
+                // better
+                {
+                    (async () => {
+                        Promise.all([getList(), getAnotherList()]).then(...);
+                    })();
                 }
             }
         }
