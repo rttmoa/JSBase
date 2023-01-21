@@ -16,9 +16,10 @@
         {
             let arr = ['1', '2', '3', '1', 'a', 'b', 'b']
 
-            let res = [...new Set(arr)]
+            // let res = [...new Set(arr)]
+            let res = Array.from(new Set(arr))
 
-            // console.log("Set", res) // ['1', '2', '3', 'a', 'b']
+            console.log("Set", res) // ['1', '2', '3', 'a', 'b']
         }
  
  
@@ -39,6 +40,7 @@
 
 // 数组去重 reduce 
         {
+            // reduce实现求和，求最大值，数组去重
             // const res = [2, 4, 3].reduce((prev, curr) => { return prev + curr },) // 第一次打印prev是2
             // const res = [2, 4, 3].reduce((prev, curr) => { return prev + curr }, 1) // 第一次打印prev是3
             // const res = [2, 4, 3].reduce((total, item) => { return Math.max(total, item) }) // 第一次打印prev是3
