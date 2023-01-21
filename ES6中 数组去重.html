@@ -37,6 +37,12 @@
         }
 
 
+// 数组去重 reduce 
+        {
+            const res = [2, 1, 3].reduce((prev, curr) => {
+                console.log(prev)
+            })
+        }
 
 // 数组去重 forEach
         {
@@ -69,7 +75,7 @@
         // const newArrLength = new Set(arr.map(value => value.name)).size // 1 ?
         const newArrLength = new Set(arr.map(value => value.uname)).size;   
         const Arrlength = arr.length;
-        if(Arrlength > newArrLength) {console.log("重复")}
+        // if(Arrlength > newArrLength) {console.log("重复")}
 
   
         // 2.利用findIndex或者indexOf查到的下标和当前循环的下标对比是否相等
@@ -80,7 +86,7 @@
         const reNewArr = newArr.some((item, index, array) => {
             return array.indexOf(item) != index
         })   
-        if(reNewArr){console.log("重复")} // 查找时、找到第二个张三222时、返回的索引是 1、index为 2
+        // if(reNewArr){console.log("重复")} // 查找时、找到第二个张三222时、返回的索引是 1、index为 2
 
         // 使用findIndex
         const isRepeat = newArr.some((item, index, array) => {
@@ -89,7 +95,7 @@
                 return y === item
             }) != index
         })
-        console.log(isRepeat)
+        // console.log(isRepeat)
 
 
 
