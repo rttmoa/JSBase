@@ -66,14 +66,19 @@
             // const res = [2, 4, 3].reduce((prev, curr) => { return prev + curr }, 1) // 第一次打印prev是3
             // const res = [2, 4, 3].reduce((total, item) => { return Math.max(total, item) }) // 第一次打印prev是3
 
-            const res = [1, 2, 3, 2, 1, 4].reduce((total, item) => { 
+            const Arrres = [1, 2, 3, 2, 1, 4].reduce((total, item) => { 
                  
                 total.indexOf(item) === -1 && total.push(item)
-                // console.log(total)
                 return total
             }, [])  
-
             // console.log("结果：", res) // [1, 2, 3, 4]
+
+            // 覆盖属性名
+            const Objres = ['1', '2', '3', '1', 'a', 'b', 'b'].reduce((map, item) => {
+                map[item] = 0
+                return map
+            }, {})
+            Object.keys(Objres)
         }
 
 // 数组去重 forEach
@@ -84,7 +89,7 @@
             arr.forEach(value => {
                 obj[value] = 0
             })
-            // console.log(obj) // {1: 0, 2: 0, 3: 0, a: 0, b: 0}
+            // Object.keys 用于获取对象自身所有的可枚举的属性值，但不包括原型中的属性，然后返回一个由属性名组成的数组
             let res =  Object.keys(obj)  
             
             // console.log("forEach", res) // ['1', '2', '3', 'a', 'b']
