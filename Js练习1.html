@@ -14,12 +14,12 @@
 
 
     <!-- 
-
+        Promise使用、Promise读取文件、Promise写文件优化、
      -->
 
     <script>
 
-        
+
 //--------------------------异步方案--------------------------------
         {
             {
@@ -29,12 +29,12 @@
                         cb("完成")
                     }, 1000)
                 }
-                doSomething(function(arg){
-                    // console.log( "done here" , arg);
-                })
-            }
-            {
-                // // promise
+                // doSomething(function(arg){
+                //     console.log( "done here" , arg);
+                // })
+            } 
+            {  
+                // Promise回调
                 function doSomething2(){
                     return new Promise((reslove, reject) => {
                         setTimeout(function(){
@@ -42,14 +42,29 @@
                         }, 2000)
                     }) 
                 }
-                doSomething2().then(function(res) {
-                    // console.log(res)
-                })
+                // doSomething2().then(function(res) {
+                //     console.log(res)
+                // })
+            }
+            {
+                // Promise读取文件回调 finally
+                function getFile(fPath){
+                    return new Promise((reslove, reject) => {
+                        fs.readFile(fPath, "UTF-8", function (err, dataStr) {
+                            if(err) return reject(err);
+                            reslove(dataStr)
+                        })
+                    })
+                }
+                // getFile("./files/1.txt").then(value => {
+                //     console.log(value)
+                // }).catch(error => {
+                //     console.log(error)
+                // }).finally(() => console.log('finished'));
             }
             {
                 // promise 代码优化
-                { 
-                    // // bad
+                // // bad
                     // request(url, function(err, res, body) {
                     //     if (err) handleError(err);
                     //     fs.writeFile('1.txt', body, function(err) {
@@ -69,16 +84,9 @@
                     // })
                     // .catch(function(e){
                     //     handleError(e)
-                    // });
-                }
-                // Promise finally
-                {
-                    // fetch('file.json')
-                    // .then(data => data.json())
-                    // .catch(error => console.error(error))
-                    // .finally(() => console.log('finished'));
-                }
-
+                    // }); 
+            }
+            {
                 // async/await
                 {
                     async function getItems() {
@@ -95,7 +103,6 @@
                     //     // 处理排序后的成员
                     // })
                 }
-                  
             }
         }
     </script>
