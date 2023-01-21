@@ -10,6 +10,27 @@
     <script>
 
 
+
+// 数组去重 splice
+        {
+            // splice实现去重
+            // splice实现删除、替换、增加功能
+            const arr = [1,2,2,2,4,2,4];
+            for (let i = 0; i < arr.length; i++) {
+                
+                for (let j = i+1; j < arr.length; j++) {
+                    
+                    if(arr[i] === arr[j]){
+                        
+                        arr.splice(j, 1)
+                        j-- 
+                        // console.log(arr)
+                    }
+                }
+            }
+            // console.log(arr)
+        }
+
  
 
 // 数组去重 set
@@ -19,7 +40,7 @@
             // let res = [...new Set(arr)]
             let res = Array.from(new Set(arr))
 
-            console.log("Set", res) // ['1', '2', '3', 'a', 'b']
+            // console.log("Set", res) // ['1', '2', '3', 'a', 'b']
         }
  
  
