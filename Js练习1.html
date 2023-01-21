@@ -20,6 +20,37 @@
     <script>
 
 
+
+
+        // fs读取文件异步回调方式
+        {
+            function FileExtension () {
+
+                fs.readFile(fileURL, function(err, data){
+                    if(err){
+                        // 文件不存在
+                        res.writeHead(404, {"Content-Type":"text/html;charset=UTF8"})
+                        res.end("404, 页面没有找到")
+                    }
+                    getMime(extname, function(mime){
+                        res.writeHead(200, {"Content-Type": mime})
+                        res.end(data)
+                    }) 
+                })
+            }
+            function getMime(extname, callback){
+                // 读取mime.json文件 得到JSON 根据extname的key 返回对应的value
+                fs.readFile("./mime.js", function(err, data){
+                    if(err) {throw new Error("找不到mime.json文件"); return}
+                    const mimeJSON = JSON.parse(data);
+                    // ".json":"application/json"  ||  ".css":"text/css"
+                    const mime = mimeJSON[extname] || "text/plain"
+                    // mime   text/html | text/css | 
+                    callback(mime)
+                })
+            }
+        }
+
 //--------------------------异步方案--------------------------------
         {
             {
@@ -47,7 +78,7 @@
                 // })
             }
             {
-                // Promise读取文件回调 finally
+                // Promise异步读取文件回调 finally
                 function getFile(fPath){
                     return new Promise((reslove, reject) => {
                         fs.readFile(fPath, "UTF-8", function (err, dataStr) {
