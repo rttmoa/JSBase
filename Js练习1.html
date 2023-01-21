@@ -14,10 +14,26 @@
 
 
     <!-- 
-        Promise使用、Promise读取文件、Promise写文件优化、
+        随机生成验证码
+        Promise使用、Promise读取文件、Promise写文件优化、async/await
      -->
 
     <script>
+
+
+        // 随机生成验证码
+        {
+            let Ran = function randomCode(length){
+                let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                let res = ""
+                for (let i = 0; i < length; i++) {
+                    let index = Math.ceil(Math.random() * 9) // [0, 1) * 9 = [0, 9]
+                    result += chars[index]
+                }
+                // console.log(res)
+            }
+            Ran(6)
+        }
 
 
 
