@@ -156,11 +156,17 @@
                 }
 
             }
-            console.log(RandomNum4(1,5))
+            // console.log(RandomNum4(1,5))
         }
 
 
-
+// 输入一个值,返回其数据类型
+        {
+            function type(para){
+                return Object.prototype.toString.call(para)
+            }
+            type(1)
+        }
 
 
 
@@ -307,6 +313,53 @@
 
 
 
+
+
+
+// 两个数之间累乘
+        {
+            function multBetride(x, y){
+                let count;
+
+                if(x < y){
+                    count = x
+                    for (let i = x + 1; i <= y; i++) {
+                        
+                        count *= i 
+                    }
+                    return count
+                }
+                else{
+                    count = y
+                    for (let i = y + 1; i <= x; i++) {
+                        
+                        count *= i
+                    }
+                    return count
+                }
+
+            }
+            console.log(multBetride(3, 5)) // 60
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     </script>
 </body>
 </html>
