@@ -12,7 +12,7 @@
         前端一些算法(ES6版)：https://yebd1h.smartapps.cn/pages/blog/index?blogId=127066743&_swebfr=1&_swebFromHost=bdlite
      -->
      <!-- 
-
+        
       -->
 
     <script>
@@ -411,6 +411,142 @@
             }
             // staArrNum([1,2,3,2,1,2,3,,1,2,3,2,3,1,1,23,,123,,123,,2,,23,,2])
         }
+
+
+
+
+// 在数组中找指定的元素,返回下标   indexOf的封装
+        {
+            Array.prototype.arrFinNum = function(num){
+                let index = -1;
+
+                for (let i = 0; i < this.length; i++) {
+                    
+                    if(this[i] == num){ // 双等比较值
+                        index = i
+                        break
+                    }
+                }
+                return index
+            }
+
+            let newArr = [3,1,2,3,5,2]
+            // newArr.arrFinNum("5")
+
+
+            // 删除数组中的元素
+            function delArrNum (arr, val){
+                let index = arr.arrFinNum(val)
+
+                if(index != -1){
+                    return arr.splice(index, 1);
+                }
+            }
+            // delArrNum(newArr, 5)
+            // console.log(newArr)
+        }
+
+        
+
+
+
+
+
+// 获取视窗尺寸
+        {
+            function getViewportOffset() {
+
+                if (window.innerWidth) {
+
+                    return {
+
+                        w: window.innerWidth,
+
+                        h: window.innerHeight
+
+                    }
+
+                } else {
+
+                    // ie8及其以下
+
+                    if (document.compatMode === "BackCompat") {
+
+                        // 怪异模式 
+                        return { 
+
+                            w: document.body.clientWidth, 
+                            h: document.body.clientHeight 
+                        }
+
+                    } else { 
+                        // 标准模式 
+                        return {
+
+                            w: document.documentElement.clientWidth, 
+                            h: document.documentElement.clientHeight 
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+
+// 银行卡号分割
+        {
+            bank_filter = val =>{ 
+                val += ''; 
+                val = val.replace(/(\s)/g,'').replace(/(\d{4})/g,'$1 ').replace(/\s*$/,''); 
+                return val; 
+            }
+        }
+
+
+
+// 对象赋值
+        {
+            /**
+             * @desc 当两个对象有相同的key时、快速赋值  如果obj1和obj2有相同的属性  将obj2的属性值赋值给obj1
+             * @params obj1 被赋值的对象
+             * @params obj2 赋值的对象
+             * @example
+             * Tools.objToValueObj("{a:1, b:2, d:5}", "{a:2, b:3, c:4}")
+             * obj1: {a:2, b:3, d:5}
+             */ 
+            let objToValueObj = function (obj1, obj2){
+
+                // console.log(Object.keys(obj1)) //  ['a', 'b', 'd']
+                Object.keys(obj1).forEach(function(key){
+
+                    if(obj2[key]){
+                        obj1[key] = obj2[key]
+                    }
+                })
+                return obj1
+            }
+            // let res = objToValueObj({a:1, b:2, d:5}, {a:2, b:3, c:4})
+            // console.log(res) // {a: 2, b: 3, d: 5}
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
