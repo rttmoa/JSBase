@@ -91,7 +91,19 @@
 
 // 冒泡排序
         {
+            let arr = [43, 32, 1, 5, 9, 22];
+            arr.forEach(function(v, i){
 
+                // for (let j = i; j < arr.length; j++) { 
+                //     if(arr[i] > arr[j+1]){ [arr[i], arr[j+1]] = [arr[j+1], arr[i]] }
+                // }
+
+                for (let j = i + 1; j < arr.length; j++) { 
+                    if(arr[i] > arr[j]){ [arr[i], arr[j]] = [arr[j], arr[i]] }
+                }
+                
+            })
+            console.log(arr)
         }
 
 
