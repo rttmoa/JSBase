@@ -18,7 +18,7 @@
     <script>
 
 
-// js 统计一个字符串出现频率最高的字母/数字
+//--------------------------------------------js 统计一个字符串出现频率最高的字母/数字-------------------------------------------------------------------------------------------------
         {
             let str = 'asdfghjklaqwertyuiopiaiayyyy';
             let strChar = [...str], maxValue = "", strObj = {}, max = 0;
@@ -39,8 +39,7 @@
 
 
 
-
-// 翻转字符串
+//--------------------------------------------翻转字符串-------------------------------------------------------------------------------------------------
         {
             let str = "Hello World" 
 
@@ -50,8 +49,7 @@
             // console.log("reverseString", reverseString) // dlroW olleH
         }
 
-
-// 数组中最大差值 forEach
+//--------------------------------------------数组中最大差值(最大值减最小值) forEach-------------------------------------------------------------------------------------------------
         {
             // 或者使用Math.min(a, b) 
             // Math.min(...[a, b])
@@ -69,7 +67,7 @@
         }
 
 
-// 数组中最大差值 max,min
+//--------------------------------------------数组中最大差值 max,min-------------------------------------------------------------------------------------------------
         {
             let arr = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
             
@@ -160,7 +158,7 @@
         }
 
 
-// 输入一个值,返回其数据类型
+// 输入一个值,返回其数据类型 Object.prototype.toString.call(params)
         {
             function type(para){
                 return Object.prototype.toString.call(para)
@@ -339,7 +337,44 @@
                 }
 
             }
-            console.log(multBetride(3, 5)) // 60
+            // console.log(multBetride(3, 5)) // 60
+        }
+
+
+
+
+
+
+// 计时器(计算代码块(函数)执行时间)
+        {
+            function computeTime(code){
+                let startTime = new Date().getTime()
+                code()
+                let endTime = new Date().getTime()
+                let time = endTime - startTime
+                return time
+            }
+            // const res = computeTime(function(){
+            //     for (let i = 0; i < 1000; i++) { 
+            //         console.log(123)
+            //     }
+            // })
+            // console.log(res)
+        }
+        {
+            function computeTime(f) { 
+
+                let startTime = new Date().getTime();
+                let p = [];
+                for(let i = 1; i < arguments.length; i++){
+                    p.push(arguments[i])
+                }
+                f.apply(null, p) 
+                let endTime = new Date().getTime(); 
+                let Time = endTime - startTime; 
+                return Time;
+
+            }
         }
 
 
@@ -349,17 +384,39 @@
 
 
 
+// 统计数组中各个元素出现的次数
+        {
+            function staArrNum(arr){
+
+                let obj = {};
+
+                for(let i=0; i<arr.length; i++){
+
+                    let m = arr[i];
+
+                    if(obj.hasOwnProperty(m)){ // 相当于 obj[m]  表示自己添加的属性  obj.uname = 'zhangsan'
+
+                        obj[m] += 1;
+
+                    }else{
+
+                        obj[m] = 1;
+
+                    }
+
+                }
+                // console.log(obj)
+                return obj;
+
+            }
+            // staArrNum([1,2,3,2,1,2,3,,1,2,3,2,3,1,1,23,,123,,123,,2,,23,,2])
+        }
 
 
 
 
 
 
-
-
-
-
-        
     </script>
 </body>
 </html>
