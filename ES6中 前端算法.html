@@ -103,7 +103,7 @@
                 }
                 
             })
-            console.log(arr)
+            // console.log(arr)
         }
 
 
@@ -138,7 +138,37 @@
 
 // 比较两个数组的内容是否相同
         {
+            // console.log(Array.prototype.equals) // undefined
+            if(Array.prototype.equals){
+                console.warn("覆盖现有的 Array.prototype.equals。可能的原因: 新的 API 定义了方法，存在框架冲突或者您的代码中有双重包含")
+            }
+
+            Array.prototype.equals = function(array){
+                if(!array) return false; 
+                if(this.length != array.length) return false; // this调用者、array被调用者
+                for (let i = 0, l = this.length; i < l; i++) {
+                    
+                    // 检查我们是否有嵌套数组
+                    if(this[i] instanceof Array && array[i] instanceof Array){
+
+                        // 递归到嵌套数组
+                        if(!this[i].equals(array[i])) return false;
+                    }
+                    else if(this[i] != array[i]){
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // 从 for-in 循环中隐藏方法 
+            Object.defineProperty(Array.prototype, "equals", {
+                enumerable: false
+            })
             
+            const newArr = ["444", 444, this]
+            // {userName: "zs"}.equals([444, "444", this])
+            newArr.equals([1])
         }
 
 
