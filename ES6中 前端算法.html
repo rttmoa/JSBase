@@ -111,24 +111,52 @@
 // 随机数生成
         {
             // 1、min ≤ r ≤ max  
-            function RandomNumBoth(min, max) {
+            function RandomNumBoth1(min, max) {
                 var Range = max - min;
                 var Rand = Math.random()
-                var num = min + Math.round(Range * Rand) // 2 * [0, 1)  -> 四舍五入 -> 2 * [0, 1]
+                var num = min + Math.round(Range * Rand) // Math.round  -> 四舍五入 
                 // console.log(num)
             }
-            // RandomNumBoth(1 ,3)
+            // RandomNumBoth1(1 ,3)
 
             // 2、 min ≤ r < max
-            function RandomNumBoth(min, max) {
+            function RandomNumBoth2(min, max) {
                 var Range = max - min;
                 var Rand = Math.random()
-                var num = min + Math.floor(Range * Rand) // 2 * [0, 1)  -> 四舍五入 -> 2 * [0, 1]
-                console.log(num)
+                var num = min + Math.floor(Range * Rand) // Math.floor  -> 向下取整
+                // console.log(num)
             }
-            // RandomNumBoth(1, 3)
+            // RandomNumBoth2(1, 3)
 
-            
+            // 3、min < r ≤ max
+            function RandomNumBoth3(min, max) {
+                var Range = max - min;
+                var Rand = Math.random()
+                if( Math.round(Rand * Range) === 0 ) { return min + 1 }
+                var num = min + Math.round(Range * Rand)  
+                return num
+            }
+            // console.log(RandomNumBoth3(1, 5))
+
+            // 4、min < r < max
+            function RandomNum4(Min, Max) {
+
+                var Range = Max - Min; 
+                var Rand = Math.random();
+
+                if(Math.round(Rand * Range) == 0){ 
+                    return Min + 1; 
+                }
+                else if(Math.round(Rand * Max) == Max){ 
+                    return Max - 1; 
+                }
+                else{ 
+                    var num = Min + Math.round(Rand * Range) - 1; 
+                    return num; 
+                }
+
+            }
+            console.log(RandomNum4(1,5))
         }
 
 
@@ -171,6 +199,109 @@
             newArr.equals([1])
         }
 
+
+
+
+
+
+
+// 比较Object
+        {
+            Object.prototype.equals = function (object2) {
+
+            //For the first loop, we only check for types
+
+            for (propName in this) {
+
+                //Check for inherited methods and properties - like .equals itself
+
+                //Object.prototype.hasOwnProperty() - JavaScript | MDN
+                //Return false if the return value is different
+
+                if (this.hasOwnProperty(propName) != object2.hasOwnProperty(propName)) {
+
+                    return false;
+
+                }
+
+                //Check instance type
+
+                else if (typeof this[propName] != typeof object2[propName]) {
+
+                    //Different types => not equal
+
+                    return false;
+
+                }
+
+            }
+
+            //Now a deeper check using other objects property names
+
+            for (propName in object2) {
+
+                //We must check instances anyway, there may be a property that only exists in object2
+
+                //I wonder, if remembering the checked values from the first loop would be faster or not
+
+                if (this.hasOwnProperty(propName) != object2.hasOwnProperty(propName)) {
+
+                    return false;
+
+                } else if (typeof this[propName] != typeof object2[propName]) {
+
+                    return false;
+
+                }
+
+                //If the property is inherited, do not check any more (it must be equa if both objects inherit it)
+
+                if (!this.hasOwnProperty(propName))
+
+                    continue;
+
+                //Now the detail check and recursion
+
+                //This returns the script back to the array comparing
+
+                /**REQUIRES Array.equals**/
+
+                if (this[propName] instanceof Array && object2[propName] instanceof Array) {
+
+                    // recurse into the nested arrays
+
+                    if (!this[propName].equals(object2[propName]))
+
+                        return false;
+
+                } else if (this[propName] instanceof Object && object2[propName] instanceof Object) {
+
+                    // recurse into another objects
+
+                    //console.log("Recursing to compare ", this[propName],"with",object2[propName], " both named \""+propName+"\"");
+
+                    if (!this[propName].equals(object2[propName]))
+
+                        return false;
+
+                }
+
+                //Normal value comparison for strings and numbers
+
+                else if (this[propName] != object2[propName]) {
+
+                    return false;
+
+                }
+
+            }
+
+            //If everything passed, let's say YES
+
+            return true;
+
+            }
+        }
 
        
 
