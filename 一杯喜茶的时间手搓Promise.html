@@ -259,42 +259,42 @@
             }
         }
         // 链式调用
-        // new MyPromise2((resolve, reject) => {
-        //     console.log("开始执行");
-        //     setTimeout(() => {
-        //         resolve("执行resolve");
-        //     }, 1000); 
-        // }).then(res => {
-        //     console.log(res)
-            
-        //     new MyPromise2((resolve, reject) => {
-        //         setTimeout(() => {
-        //             resolve("执行resolve2222");
-        //         }, 1000); 
-        //     }).then(res2 => {
-        //         console.log(res2)
-                
-        //         new MyPromise2((resolve, reject) => {
-        //             setTimeout(() => {
-        //                 resolve("执行resolve333333");
-        //             }, 1000); 
-        //         }).then(res3 => {
-        //             console.log(res3) 
-        //         })
-        //     })
-        // }) 
-
-
         new MyPromise2((resolve, reject) => {
             console.log("开始执行");
             setTimeout(() => {
                 resolve("执行resolve");
-            }, 2000); 
+            }, 1000); 
         }).then(res => {
-            return res
-        }).then(res2 => {
-            console.log(res2)
-        })
+            console.log(res)
+            
+            new MyPromise2((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("执行resolve2222");
+                }, 1000); 
+            }).then(res2 => {
+                console.log(res2)
+                
+                new MyPromise2((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve("执行resolve333333");
+                    }, 1000); 
+                }).then(res3 => {
+                    console.log(res3) 
+                })
+            })
+        }) 
+
+
+        // new MyPromise2((resolve, reject) => {
+        //     console.log("开始执行");
+        //     setTimeout(() => {
+        //         resolve("执行resolve");
+        //     }, 2000); 
+        // }).then(res => {
+        //     return res
+        // }).then(res2 => {
+        //     console.log(res2)
+        // })
 
     </script>
 </body>
