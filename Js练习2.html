@@ -60,16 +60,21 @@
         {
             var arr = [1,2,3,4,5];
             var arr2 = [3,4,9,5,6,7];
-            
-            var temp1 = []
 
+            var temp1 = arr2.filter(value => arr.includes(value) ) // includes返回true/false    // temp1=[3, 4, 5]
+
+            var temp2 = []
+            for (let i = 0; i < arr2.length; i++) {
+                const ele = arr2[i]
+                if(temp1.indexOf(ele) === -1){ // arr2中元素在[3, 4, 5]中未找到、将元素推到temp2中
+                    temp2.push(ele)
+                }
+            }
+            // console.log(temp2) // [9, 6, 7]
+
+            const res = temp1.concat(temp2)
+            console.log(res) // [3, 4, 5, 9, 6, 7]
         }
-
-
-
-
-
-
 
 
 
