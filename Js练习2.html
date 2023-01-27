@@ -60,8 +60,8 @@
           function find (arr, target) {
               let temp = []
               arr.forEach(function(val, index){
-                  val !== target || temp.push(index) // ?
-                  // val === target && temp.push(index)
+                  val !== target || temp.push(index)   // 当val!==target时、才可以走后面的或       || 左右满足一个就可以
+                  // val === target && temp.push(index) // && 左右必须都满足才可以 
               })
               console.log(temp) // [2, 4]
           }
