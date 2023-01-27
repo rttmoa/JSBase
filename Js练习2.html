@@ -45,7 +45,7 @@
 
                 return result;   // 这里return
             }
-            console.log(flatten([1, [2, [3, 4]]]))
+            // console.log(flatten([1, [2, [3, 4]]]))
         }
 
 
@@ -58,7 +58,20 @@
 
 
 
+//------------------------------编程题：分别使用es5的闭包和es6的let-------------------------------------------------------------------------------------------------------
+        {
+          var func1 = []
 
+          for (var i = 0; i < 10; i++) {
+            // func1.push(function(){console.log(i)}())
+            // func1.push((function(value){ return function(){ return value } })(i)())
+          }
+
+          var func2 = []
+          for (let i = 0; i < 10; i++) {
+              // func2.push(function(){ console.log(i) }())
+          }
+        }
 
 
 
