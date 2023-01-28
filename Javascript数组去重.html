@@ -11,10 +11,13 @@
     <!-- https://blog.csdn.net/weixin_42232156/article/details/121822723 -->
     <!-- 
         Js 7种方法实现去重:  
-            1、双循环去重
-            2、indexOf方法去重1
-            3、indexOf方法去重2
-
+            1、双循环去重 (双for设置标识flag)
+            2、indexOf方法去重1 (查找数组元素)
+            3、indexOf方法去重2 (查找数组位置)
+            4、相邻元素去重 (先sort再循环比对)
+            5、利用对象属性去重 (Obj属性是否是undefined || ++)
+            6、set与解构赋值去重 ([...new Set(arr)])
+            7、Array.from与set去重 (Array.from(new Set(arr)))
     -->
 
     <script>
