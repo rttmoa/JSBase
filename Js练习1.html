@@ -18,6 +18,7 @@
         随机生成验证码
         fs读取文件异步回调方式
         搜索框搜索内容(字符串是否包含输入的文字)
+        使用async-await方法
         Promise使用、Promise读取文件、Promise写文件优化、async/await
      -->
 
@@ -92,6 +93,22 @@
             // 	// 将查询结果返回给客户端
             // 	console.log(result);
         }
+
+//-------------------------------------使用async-await方法-------------------------------------------------------------------------------------
+        {
+            async function test(){return '您好';}
+            async function main(params){
+                let data = await test();   
+                return `${data} ${params}`
+            }
+            // main("zhangsan").then(value => {
+            //     // console.log(value)
+            //     return main("Lisi")
+            // }).then(newValue => {
+            //     // console.log(newValue)
+            // })
+        }
+
 //-------------------------------------异步方案、普通回调、Promise回调、async-------------------------------------------------------------------------------------
         {
             {
