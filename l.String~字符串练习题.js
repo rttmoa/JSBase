@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
 
 
-	<script type="text/javascript">
-		// 调试该文件			
+
+
+
+// 调试该文件			
 
 		// 练习一、
 		let str = '我哎我的abcdskjgajdgasasMnsadna,MndasMdasdsaM祖国, 非常喜爱'; 
@@ -60,8 +55,3 @@
 		// 小黑:66
 		// 小绿:88  
 		console.log("-----------------------------练习三、--------------------------------------------------")
-
-	</script>
-	
-</body>
-</html>
