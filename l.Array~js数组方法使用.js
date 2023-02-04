@@ -1,37 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- 1-数组方法的使用 -->
-    <!-- 
-        toString()
-        join()
-        pop()
-        push()
-        shift()
-        unshift()
-        reverse()
-        splice()
-        indexOf()
-        lastIndexOf()
-        sort()
-        concat()
-        slice()
-     -->
-    <script>
+
+
+
+// 数组方法的使用
+//         toString()
+//         join()
+//         pop()
+//         push()
+//         shift()
+//         unshift()
+//         reverse()
+//         splice()
+//         indexOf()
+//         lastIndexOf()
+//         sort()
+//         concat()
+//         slice()
+
+
+// console.log(Array.prototype)
+
+
+
+
  
-        console.log(Array.prototype)
 
-/**--- isArray()、 判断数组、 grammar: Array。isArray(arr) ---**/ 
-        if(Array.isArray([1, 22])) console.log('确实是Array')
 
-/**--- toString()、 可以把数组转化为字符串 并返回结果、 grammer: array.toString() ---**/ 
+//---------------------------------isArray()-------------------------------------------------------
+    
+    {
+        if(Array.isArray([1, 22])) {
+            // console.log('确实是Array')
+        }
+    }
+
+
+//---------------------------------toString()-------------------------------------------------------
+
+    {
         const toString = ['a', 'b', 'c'].toString()
+        
+    }
 
 /**--- join() 方法用于把数组中所有元素放入一个字符串、 array.join(separator)-可选 ---**/ 
         const join = ['a', 'b', 'v'].join('?')
@@ -166,6 +174,3 @@
         var arr = ['a','c','b','c','e']
         var index = arr.lastIndexOf('c')
         console.log(index)  // 3
-    </script>
-</body>
-</html>
