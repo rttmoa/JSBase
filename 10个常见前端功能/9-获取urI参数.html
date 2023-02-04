@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getParams(url){
+            const res = {}
+            if(url.includes('?')){
+                // console.log(url.split('?'))
+                // console.log(url.split('?')[1].split('&'))
+
+                const str = url.split('?')[1]; // ['http://wwv.baidu.com', 'user=%E9%98%BF%E9%A3%9E&age=16']
+                const arr = str.split('&'); // ['user=%E9%98%BF%E9%A3%9E', 'age=16']
+                arr.forEach(item => {
+                    const key = item.split('=')[0];
+                    const val = item.split('=')[1];
+                    res[key] = decodeURIComponent(val) // 解码
+                    res['tt'] = 666
+                });
+            }
+            return res
+        }
+        // 测试
+        const user = getParams('http://wwv.baidu.com?user=%E9%98%BF%E9%A3%9E&age=16');
+        console.log(user) // {user: '阿飞', age: '16'}
+    </script>
+</body>
+</html>

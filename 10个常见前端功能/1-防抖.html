@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .top{
+            height: 10000px;
+            width: 500px;
+            background-color:darkturquoise
+        }
+    </style>
+</head>
+<body>
+    <div class="top"></div>
+    <script>
+        function debounce(fn, delay){
+            let timer;
+            return function(...args){
+                // console.log(timer) // 数字
+                // console.log(args) // [Event]
+                if(timer){
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(() => {
+                    // console.log(this) // Window
+                    fn.apply(this, args)
+                }, delay)
+            }
+        }
+
+        // 测试
+        const task = () => {
+            // console.log(this) // Window
+            console.log('run task')
+        }
+        window.addEventListener('scroll', debounce(task, 2000))
+        // const debounceTask = debounce(task, 1000);
+        // window.addEventListener('scroll', debounceTask)
+        
+    </script>   
+</body>
+</html>
