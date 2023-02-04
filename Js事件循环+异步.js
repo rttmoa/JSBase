@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        // Url: https://blog.csdn.net/qq_44552416/article/details/123133127
+
+
+
+
+
+
+
+
+
+
+// Url: https://blog.csdn.net/qq_44552416/article/details/123133127
         // 同步执行和异步执行的任务执行流程
 
 
@@ -217,13 +217,3 @@
         // 结果：1、2、5、6、end、t2p、7、8、undefined、t1p、3、4
 
 
-
-
-
- 
-
-
-
-    </script>
-</body>
-</html>

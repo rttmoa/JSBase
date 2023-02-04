@@ -1,0 +1,48 @@
+Chapter1-->
+    Babel 可以将ES6 语法 转换为 ES5语法    ||   class Calc {}
+
+Chapter2-->
+    lesson1->
+        let命令: 不存在变量提升、暂时性死区、let不受外界影响、不允许重复声明、let模块内不重复声明
+    lesson2->
+        块级作用域: unction和for循环中var和let的区别、块级作用域中的let和var
+    lesson3->
+        const命令: 块级作用域、暂时性死区、不可重复声明、const对象、const对象错误用法、const数组、const冻结对象
+            和let的区别  let by = 1; by=2;    const bys =2; bys=5;    const错误    const obj = {n:3};   obj={}  const错误  
+    lesson4->
+        跨模块常量：import export 导入导出
+    lesson5->
+        全局变量属性：var g = '全局'; window.g; this.g ->可以获取  let g = '全局'; window.g; this.g ->获取不到
+
+Chapter3-->
+    lesson1->
+        数组解构赋值：1.数组解构、2.解构对应位置(一一对应、逗号是占位符、...剩余参数)
+        -------------3.数组解构制定默认值、4.Iterator接口、5.new Set[]也可以解构
+    lesson2->
+       对象的解构赋值：1.对象解构可以不用按顺序解构、2.可以给解构的属性名改新名let {username: name}={username:"zhansan"}
+       ---------------3.对象解构设置默认值、4.对象解构默认值条件(undefined、null)、5.let { sin, cos, tan, log } = Math;
+    lesson3->
+        字符串解构赋值：1.const [ a, b, c, d, e ] = "Hello"
+                       2.const {length: len} = 'Hello'
+    lesson4->
+        函数参数的解构赋值： 1.函数参数的解构赋值        sum([x, y])
+                            2.函数参数解构赋值的默认值  fun ({x = 0, y = 0} = {})
+                            3.3函数参数解构赋值的默认值undefined   fun ({x, y} = { x: 0, y: 0 }) {}   只传x不传y
+
+    lesson5->
+        解构赋值的用途：1交换变量的值----[x, y] = [y, x]
+                       2.从函数返回多个值_返回一个数组---var [x, y, z] = fun()
+                       3.从函数返回多个值_返回一个对象
+                                function fun () {return {id  : "007",name: "Conan",	age : 28};	};
+                                const { id, name, age } = fun()
+                       4.函数参数的定义
+                                数组：参数是一组有次序的值 fn([x, y, z]){}
+                                对象：参数是一组无次序的值 fn({name, id, age})
+                       5.对象解构提取JSON数据----let { id: number, name, age, score: score } = jsonData
+                       6.函数参数的默认值
+                       7.遍历map结构---new Map() -- for(of)遍历  --- for(in)遍历
+                       8.输入模块的指定方法----const { SourceMapConsumer, SourceNode } = require("source-map")
+
+
+Chapter4-->
+    遍历Map结构:const map=new Map(); map.set(); for(const [key, value] of map){};;   map=Map(2) {'id' => '007', 'name' => 'Conan'}

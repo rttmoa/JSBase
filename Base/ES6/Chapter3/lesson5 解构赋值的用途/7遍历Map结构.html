@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>遍历Map结构</title>
+<script type="text/javascript">
+	var map = new Map();
+	map.set("id", "007");
+	map.set("name", "Conan");
+
+	console.log(map);//   0:{"id" => "007"}      1:{"name" => "Conan"}       size:2
+	console.log(typeof(map)); //object
+
+	//	获取键名和键值
+	for (let [key, value] of map) {
+		console.log(key + " is " + value);
+	};
+	// id is 007
+	// name is Conan
+	
+	//	获取键名
+	for (let [key] of map) {
+		console.log(key);
+	};
+	// id
+	// name
+	
+	for (let [, value] of map) {   //如果不加 ,  打印出id、name
+		console.log(value);
+	};
+	// 007
+	// Conan
+</script>
+</head>
+<body>
+
+</body>
+</html>

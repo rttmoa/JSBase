@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        const map = new Map();
+        map.set('id', '007');
+        map.set('name', 'Conan');
+
+        console.log(map);  //  {'id' => '007', 'name' => 'Conan'}
+        console.log(typeof(map)); //object
+
+        
+        for (const [key, value] of map) {
+            console.log(key+ 'is' + value);
+        }
+
+        for (const [key] of map) {
+            console.log(key);
+        }
+
+        for (const [, value] of map) {
+            console.log(value);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
