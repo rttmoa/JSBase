@@ -11,8 +11,9 @@
         // fs读取文件异步回调方式
         // 搜索框搜索内容(字符串是否包含输入的文字)
         // 使用async-await方法
-        // Promise使用、Promise读取文件、Promise写文件优化、async/await
-
+        // Promise静态方法
+        // Promise 使用、Promise读取文件、Promise写文件优化、async/await
+         
  
 
 
@@ -23,7 +24,7 @@
         {
             let Ran = function randomCode(length){
                 let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-                let res = ""
+                let result = ""
                 for (let i = 0; i < length; i++) {
                     let index = Math.ceil(Math.random() * 9) // [0, 1) * 9 = [0, 9]
                     result += chars[index]
@@ -69,25 +70,25 @@
 
 //--------------------------搜索框搜索内容(字符串是否包含输入的文字)-------------------------------------------------------------------------------------
         {
-            // const key = '黑马';
-            // 	// 提示文字列表
-            // 	const list = [
-            // 		'黑马程序员',
-            // 		'黑马程序员官网',
-            // 		'黑马程序员顺义校区',
-            // 		'黑马程序员学院报名系统',
-            // 		'传智播客',
-            // 		'传智博客前端与移动端开发',
-            // 		'传智播客大数据',
-            // 		'传智播客python',
-            // 		'传智播客java',
-            // 		'传智播客c++',
-            // 		'传智播客怎么样'
-            // 	];
-            // 	// 搜索结果
-            // 	// let result = list.filter(item => item.includes(key));
-            // 	// 将查询结果返回给客户端
-            // 	console.log(result);
+            const key = '黑马';
+            	// 提示文字列表
+            	const list = [
+            		'黑马程序员',
+            		'黑马程序员官网',
+            		'黑马程序员顺义校区',
+            		'黑马程序员学院报名系统',
+            		'传智播客',
+            		'传智博客前端与移动端开发',
+            		'传智播客大数据',
+            		'传智播客python',
+            		'传智播客java',
+            		'传智播客c++',
+            		'传智播客怎么样'
+            	];
+            	// 搜索结果
+            	// let result = list.filter(item => item.includes(key));
+            	// 将查询结果返回给客户端
+            	// console.log(result);
         }
 
 
@@ -105,6 +106,42 @@
             // }).then(newValue => {
             //     // console.log(newValue)
             // })
+        }
+
+//--------------------------Promise静态方法-------------------------------------------------------------------------------------
+        {
+            // console.log(Promise.prototype) // then, catch, finally
+            const p = new Promise((reslove, reject) => {
+                reslove(200)
+                // reject(a)
+            })
+            // console.log(p)
+
+            // Promise还提供了一些常用的静态方法
+                // Promise.reslove()
+                // Promise.reject()
+                // Promise.all()
+                // Promise.race()
+            
+            // 1. Promise.resolve(200) 会返回一个成功的promise
+            // 等价于
+            // new Promise((resolve, reject) => {
+            //   resolve(200)
+            // })
+
+            // 2. Promise.reject(new Error('123')) 返回一个失败的promise
+            // 等价于
+            // new Promise((resolve, reject) => {
+            //   reject(new Error())
+            // })
+
+            // 3. Promise.all()  接受一个promise数组，返回一个promise
+            // 只有所有的promise都成功了，返回的promise才会成功
+            // Promise.all([p1, p2, p3, p4]).then()
+
+            // 4. Promise.race() 接收一个Promise数组，返回一个promise
+            // 返回的promise只会取决于第一个结束的promise
+            // Promise.race([p1, p2, p3, p4])  获取一个数据  缓存  请求获取
         }
 
 
