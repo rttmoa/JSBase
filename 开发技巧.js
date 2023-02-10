@@ -15,7 +15,7 @@
 //             break
 //         } 
 //     }
-// }
+// } 
 // var arr = ['a', 'b', 'c'];
 // delArrVal(arr, 1)
 // console.log(arr) // [ 'a', 'c' ]
