@@ -5,8 +5,6 @@
 
 
 
-
-
         // 随机生成验证码
         // fs读取文件异步回调方式
         // 搜索框搜索内容(字符串是否包含输入的文字)
@@ -14,6 +12,9 @@
         // Promise静态方法
         // Promise 使用、Promise读取文件、Promise写文件优化、async/await
          
+
+
+
 // 日期
 // Date.now()
 // +new Date()
@@ -40,9 +41,9 @@
 // // console.log(stars) // { User1: 'P1', User2: 'P2', ww: 'P3', sb: 'P4' }
 
 // 三元运算符
-let eat = 0, sleep = 1, play = 2, run = 3;
-let FinalResults = eat === "0" ? "eat" : sleep === "1" ? "sleep" : play === "2" ? "play" : run === "3" ? "run" : "最后结果为?"
-// console.log(FinalResults)
+// let eat = 0, sleep = 1, play = 2, run = 3;
+// let FinalResults = eat === "0" ? "eat" : sleep === "1" ? "sleep" : play === "2" ? "play" : run === "3" ? "run" : "最后结果为?"
+// // console.log(FinalResults)
 
 
 
