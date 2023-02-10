@@ -14,7 +14,21 @@
         // Promise静态方法
         // Promise 使用、Promise读取文件、Promise写文件优化、async/await
          
- 
+// Date.now()
+// +new Date()
+//--------------------------对象-------------------------------------------------------------------------------------
+        {
+            function User4(){ return "sb"}
+            let stars = {}, User1 = "zs", User2 = "ls", User3 = "ww"
+            stars['User1'] = "P1";
+            stars.User2 = "P2";
+            stars[User3] = "P3";
+            stars[User4()] = "P4";
+            // console.log(stars) // { User1: 'P1', User2: 'P2', ww: 'P3', sb: 'P4' }
+
+        }
+
+
 //--------------------------三元运算符-------------------------------------------------------------------------------------
         {
             let eat = 0, sleep = 1, play = 2, run = 3;
