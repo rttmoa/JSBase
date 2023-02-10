@@ -15,6 +15,13 @@
         // Promise 使用、Promise读取文件、Promise写文件优化、async/await
          
  
+//--------------------------三元运算符-------------------------------------------------------------------------------------
+        {
+            let eat = 0, sleep = 1, play = 2, run = 3;
+            let res = eat === "0" ? "eat" : sleep === "1" ? "sleep" : play === "2" ? "play" : run === "3" ? "run" : "最后结果为?"
+            // console.log(res)
+        }
+
 
 
  
