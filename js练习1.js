@@ -14,8 +14,21 @@
         // Promise静态方法
         // Promise 使用、Promise读取文件、Promise写文件优化、async/await
          
+// 日期
 // Date.now()
 // +new Date()
+
+// undefined & null
+let newCityCity = null
+console.log(City == null) // true
+console.log(City === null) // true
+console.log(City == undefined) // true
+console.log(City === undefined) // false
+let newCity = undefined
+console.log(newCity == null) // true
+console.log(newCity === null) // false
+console.log(newCity == undefined) // true
+console.log(newCity === undefined) // true
 //--------------------------对象-------------------------------------------------------------------------------------
         {
             function User4(){ return "sb"}
