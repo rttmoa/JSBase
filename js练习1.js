@@ -19,35 +19,30 @@
 // +new Date()
 
 // undefined & null
-let newCityCity = null
-console.log(City == null) // true
-console.log(City === null) // true
-console.log(City == undefined) // true
-console.log(City === undefined) // false
-let newCity = undefined
-console.log(newCity == null) // true
-console.log(newCity === null) // false
-console.log(newCity == undefined) // true
-console.log(newCity === undefined) // true
-//--------------------------对象-------------------------------------------------------------------------------------
-        {
-            function User4(){ return "sb"}
-            let stars = {}, User1 = "zs", User2 = "ls", User3 = "ww"
-            stars['User1'] = "P1";
-            stars.User2 = "P2";
-            stars[User3] = "P3";
-            stars[User4()] = "P4";
-            // console.log(stars) // { User1: 'P1', User2: 'P2', ww: 'P3', sb: 'P4' }
+// let newCityCity = null
+// console.log(City == null) // true
+// console.log(City === null) // true
+// console.log(City == undefined) // true
+// console.log(City === undefined) // false
+// let newCity = undefined
+// console.log(newCity == null) // true
+// console.log(newCity === null) // false
+// console.log(newCity == undefined) // true
+// console.log(newCity === undefined) // true
 
-        }
+// 对象属性
+// function User4(){ return "sb"}
+// let stars = {}, User1 = "zs", User2 = "ls", User3 = "ww"
+// stars['User1'] = "P1";
+// stars.User2 = "P2";
+// stars[User3] = "P3";
+// stars[User4()] = "P4";
+// // console.log(stars) // { User1: 'P1', User2: 'P2', ww: 'P3', sb: 'P4' }
 
-
-//--------------------------三元运算符-------------------------------------------------------------------------------------
-        {
-            let eat = 0, sleep = 1, play = 2, run = 3;
-            let res = eat === "0" ? "eat" : sleep === "1" ? "sleep" : play === "2" ? "play" : run === "3" ? "run" : "最后结果为?"
-            // console.log(res)
-        }
+// 三元运算符
+let eat = 0, sleep = 1, play = 2, run = 3;
+let FinalResults = eat === "0" ? "eat" : sleep === "1" ? "sleep" : play === "2" ? "play" : run === "3" ? "run" : "最后结果为?"
+// console.log(FinalResults)
 
 
 
