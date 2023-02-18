@@ -242,7 +242,7 @@ body{
     border-color: #ff6700;
 }
 .search-list {
-    /* display: none; */
+    display: none;
     z-index: 720;
     position: absolute;
     top: 50px;
@@ -269,4 +269,38 @@ body{
 }
 .search-list > a:hover {
     background-color: #fafafa;
+}
+/*导航样式结束*/
+
+
+
+
+
+
+
+
+
+
+
+/*banner样式开始*/
+.banner, 
+.banner-box {
+    width: 100%;
+    height: 460px;
+}
+.banner-box > img {
+    width: 100%;
+}
+/*滑动门*/
+.banner-box {
+    position: relative;
+}
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 234px;
+    height: 420px;
+    background-color: rgba(105, 101, 101, .6);
+    padding: 20px 0;
 }
