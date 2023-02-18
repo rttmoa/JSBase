@@ -1,0 +1,41 @@
+1. 什么是响应式布局。
+	响应式布局就可以实现样式效果兼容多端设备。
+	实现响应式布局的方式有：
+	1) 媒体查询
+	2) bootstrap框架
+	3) js + rem
+	4) vw
+
+2. 如何区分用户是手机、平板或者电脑设备？
+	宽度<768px 是手机
+	宽度>=768px 且 宽度<992px 是平板
+	宽度>=992px 是电脑
+
+3. 弹性盒模型主要用来做什么？关键的两个属性是。
+	弹性盒模型主要用来做移动端的布局。
+	display:flex;  写在父元素上的，开启弹性盒模型，里面的子元素默认水平排列，不换行
+	flex:1; 写在子元素上的，表示弹性父元素中剩余宽度按照一定的比例分配给每个子元素
+
+4. 行内元素相较于块元素在标准盒模型中有什么不一样的。
+	行内元素不能设置垂直方向的外边距、内边距。
+
+
+第二天
+1. 说出以下选择器选中了什么元素。
+	.box div>a+input{}
+	
+	选择 class="nav" 里面的所有的 class="search" 里面的所有的 div 后面的所有的class="aaa"的兄弟
+	.nav .search div~.aaa{}
+	
+
+如何画一个三角形
+	.box1{
+            width: 0;
+            height: 0;
+            border-top: 15px solid red;
+            border-left: 10px solid transparent;
+            border-left: 10px solid rgb(210, 240, 17);
+            border-bottom: 15px solid green;
+            border-right: 10px solid transparent;
+    }
+    <div class="box1"> </div>
