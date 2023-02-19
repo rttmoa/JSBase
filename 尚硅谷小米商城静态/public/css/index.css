@@ -559,3 +559,61 @@ body{
 
 
 
+/*家电样式开始*/
+.ele-left{
+    float: left;
+    width: 234px;
+    height: 614px;
+}
+.ele-left .items{
+    margin-left: 0;
+}
+.ele-left .items img {
+    width: 100%;
+}
+.goods-price > del{
+    color: #b0b0b0;
+    margin-left: 7px;
+}
+.items1 {
+    width: 234px;
+    height: 300px;
+    float: left;
+    margin-left: 14px;
+    /* background-color: red; */
+}
+.items1 div{
+    width: 234px;
+    height: 143px;
+    background-color: #fff;
+    margin-bottom: 14px;
+    transition: all .2s linear;
+}
+.items1-desc {
+    float: left;
+    width: 94px;
+    height: 63px;
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 14px;
+    text-align: left;
+}
+.items1-img{
+    float: right;
+    width: 80px;
+    margin-top: 32px;
+    margin-right: 20px;
+}
+.items1-price{
+    color: #ff6700;
+    font-size: 12px;
+}
+/*家电样式结束*/
+
+
+
+
+
+
+
+
