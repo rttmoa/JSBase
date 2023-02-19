@@ -558,7 +558,9 @@ body{
 
 
 
-
+.elc {
+    height: 672px;
+}
 /*家电样式开始*/
 .ele-left{
     float: left;
@@ -618,7 +620,9 @@ body{
 
 
 
-
+.video {
+    height: 350px;
+}
 /* 视频样式开始 */
 .video-box li{
     width: 296px;
@@ -686,3 +690,167 @@ body{
 .footer{
     background-color: #fff;
 }
+.footer-server{
+    width: 100%;
+    height: 25px;
+    padding: 27px 0;
+    border-bottom: 1px solid #e0e0e0;
+    /* background-color: red; */
+}
+.footer-server li{
+    float: left;
+    width: 19.8%;
+    border-right: 1px solid #e0e0e0;
+}
+.footer-server li:last-child{
+    border-right: none;
+}
+.footer-server a{
+    color: #616161;
+    transition: all .2s;
+}
+.footer-server i{
+    font-size: 24px;
+    margin-right: 6px;
+}
+.footer-server a:hover{
+    color: #ff6700;
+}
+.footer-links{
+    width: 100%;
+    height: 172.5px;
+    padding: 40px 0;
+}
+.footer-links > ul{
+    float: left;
+    width: 160px;
+    text-align: left;
+    color: #424242;
+    font-size: 14px;
+}
+.footer-links li a{
+    color: #757575;
+    font-size: 12px;
+}
+.footer-links li a:hover{
+    color: #ff6700;
+}
+.footer-links li{
+    margin-top: 10px;
+}
+.footer-links li:first-child{
+    line-height: 1.25;
+    margin: -1px 0 26px;
+}
+.contact{
+    float: right;
+    width: 251px;
+    height: 111px;
+    border-left: 1px solid #e0e0e0;
+}
+.tel{
+    font-size: 22px;
+    line-height: 1;
+    color: #ff6700;
+    margin-bottom: 5px;
+}
+.time{
+    font-size: 12px;
+    color: #616161;
+    margin-bottom: 5px;
+}
+.kf{
+    display: block;
+    margin: 0 auto;
+    width: 118px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #f25807;
+    font-size: 12px;
+    color: #ff6700;
+    transition: all .4s;
+}
+.follow{
+    position: relative;
+    color: #616161;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.follow > span{
+    /*自己小范围移动*/
+    position: relative;
+    top: 10px;
+    display: inline-block;
+    width: 24px;
+    height: 26px;
+    margin-left: 6px;
+    background-size: 100%;
+    cursor: pointer;
+}
+.wb{
+    background-image: url("../images/wb.png");
+}
+.wb:hover{
+    background-image: url("../images/wb@2x.png");
+}
+.wx{
+    background-image: url("../images/wx.png");
+}
+.wx:hover{
+    background-image: url("../images/wx@2x.png");
+}
+.wx-img{
+    display: none;
+    width: 126px;
+    position: absolute;
+    top: 35px;
+    left: 100px; 
+}
+.wx:hover + .wx-img{
+    display: block;
+}
+.footer-info{
+    width: 100%;
+    height: 206px;
+    padding: 30px 0;
+}
+.info-top{
+    width: 100%;
+    height: 157px;
+}
+.info-bottom{
+    width: 100%;
+    height: 19px;
+    margin-top: 30px;
+} 
+.info-top > img{ 
+    width: 56px;
+    margin-right: 10px;
+}
+.info-top > img,
+.info-right{
+    float: left; 
+}
+.info-right {
+    width: 1160px;
+    text-align: left;
+    font-size: 12px;
+    line-height: 18px;
+}
+.info-right > p{
+    color: #b0b0b0;
+}
+.info-right > p:first-child > a{
+    color: #757575;
+}
+.info-right > p:nth-child(2) > a{
+    color: #b0b0b0;
+}
+.info-right > p > a:hover{
+    color: #ff6700;
+}
+.info-right img{
+    height: 28px;
+    margin-top: 4px;
+}
+/*页脚样式结束*/
