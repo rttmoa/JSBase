@@ -14,7 +14,7 @@
 //             arr.splice(i, 1)
 //             break
 //         } 
-//     }
+//     } 
 // } 
 // var arr = ['a', 'b', 'c'];
 // delArrVal(arr, 1)
