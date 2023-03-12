@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 前台传递过来的数据查找是否有相同的数据
+        // 如果没有那么就正常一条一条查询即可
+        // 如果有那么就将相同的数据合并后先处理相同的数据
+        // const ar = [
+        //     {id: 1, name: 'zs', uname: 'pp', age: 4},
+        //     {id: 2, name: 'lisi', uname: 'pp', age: 5},
+        //     {id: 3, name: 'zs2', uname: 'pp', age: 7},
+        //     {id: 4, name: 'zs2', uname: 'pp', age: 8},
+        //     {id: 5, name: 'zs', uname: 'pp', age: 5},
+        //     {id: 6, name: 'zs', uname: 'pp', age: 6},
+        // ];
+        // console.log(ar[2].id === 3)
+        // console.log(ar.indexOf(ar[2].id === 3))
+        // const single = [];
+        // const double = [];
+        // ar.forEach(item => {
+        //     // console.log(item)
+        //     console.log(single.indexOf(item.name))
+        //     if(single.indexOf(item.name) === -1 && single.indexOf(item.uname) === -1){
+        //         single.push(item)
+        //     }
+        // });
+        // console.log(single)
+        // console.log(double)
+        // 查看Mes需求数量、在库中查找是否满足条件
+        const DemandQuantity = 5;
+        const array = [{id: 1, num: 2}]; // false
+        // const array = [{id: 1, num: 2},{id: 1, num: 2},{id: 2, num: 2}]; // false
+        // const array = [{id: 1, num: 6}] // false
+        // const array = [{id: 1, num: 6},{id: 1, num: 6}, ]
+
+            
+        
+        //  表示库中有数据
+        if(array.length){
+            // const res = array[0].num;
+            // if(res >= DemandQuantity){
+            //     console.log('res >= DemandQuantity')
+            // }else{
+                // 看看几个箱子可以装满及总共有几个箱子
+               let prev = 0;
+               let count = 0;
+               let isSuccess = false;
+               for (let index = 0; index < array.length; index++) {
+                    const num = array[index].num;
+                    if(prev >= DemandQuantity){
+                        // 这是最终满足条件的数据
+                        console.log('满足了!!!!!!!!!!!!!!!!');
+                        isSuccess = true;
+                        break;
+                    }
+                    else{
+                        prev += num;
+                        count++
+                    }
+
+               }
+               console.log('总数', prev)
+               console.log('箱子个数', count)
+            //    if(isSuccess){
+            //     console.log(111)
+            //    }
+            //    else{
+            //     console.log(222)
+            //    }
+            }
+        // }
+        else{
+            console.log('不满足条件')
+        }
+
+
+
+    </script>
+</body>
+
+</html>

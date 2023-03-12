@@ -1,5 +1,5 @@
 
-// 数组中对象多个属性排序 sort
+// 1、数组中对象多个属性排序 sort
 // 只设计升序，如果需要倒序，处理一下field就可以了 
 function sort(arr, fields) {
     let checkOrder = (left, right, fields) => {
@@ -16,7 +16,7 @@ const rearr = sort(arr, ['id', 'age'])
 // console.log(rearr)
 
 
-// 递归求斐波那契数列
+// 2、递归求斐波那契数列
     // 斐波那契数列指的是这样一个数列：
     //     1 1 2 3 5 8 13 21 34 55 …
     //     这个数列从第3项开始，每一项都等于前两项之和

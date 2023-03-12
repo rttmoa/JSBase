@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+ 
+        // // if(danghuo > zhuang){}
+        // console.log(Math.ceil(42 / 18)) // 3
+        // console.log(42 % 18) // 6
+        // // 18,18,6
+
+        // // if(danghuo > zhuang){ if(取余 === 0){} }
+        // console.log(Math.ceil(30 / 10)) // 3
+        // console.log(10 % 10) // 0
+        // // 10,10,10
+
+        // // if(danghuo < zhuang){console.log('分配一个空箱即可，放入数量为 余数')}
+        // console.log(Math.ceil(2 / 40)) // 1
+        // console.log(2 % 40) // 2    
+        // // 2
+
+        // // if(duohuo === zhuang){console.log('分配一个空箱即可，放入数量为 到货数量')}
+        // console.log(Math.ceil(10 / 10)) // 1
+        // console.log(10 % 10) // 0
+        // // 10
+        
+
+        // 原料入库
+        // 情况1：有项目属性，库中没有相同原料，直接分配空箱 
+            // 1、到货6，装箱量10  <
+                console.log(6 / 10, Math.ceil(6 / 10)) // 0.6, 1   ~  每个箱子放6个
+            // 2、到货10，装箱量10 =
+                console.log(10 / 10, Math.ceil(10 / 10)) // 1, 1   ~  每个箱子放10个
+            // 3、到货24，装箱量10 > 取余不为0
+                console.log(24 / 10, Math.ceil(24 / 10)) // 2.4, 3   ~  每个箱子放10,10,4个
+            // 4、到货30, 装箱量10 > 取余为0
+                console.log(30 / 10, Math.ceil(30 / 10)) // 3, 3   ~  每个箱子放10,10,10个
+
+        // 情况2：有项目属性，库中有相同原料，先查询库中剩余个数，再判断是否分配空箱 
+
+
+
+
+
+
+        
+
+
+
+
+        // function fn(data) {
+        //     console.log('data', data)
+        // } 
+        // const arr = [1,2,3,4]
+        // for (let index = 0; index < arr.length; index++) {
+        //     // console.log('arr', arr[index])
+        //     if(arr[index] < 4){
+        //         // console.log('小于3的数字为', arr[index])
+        //         fn(arr[index])
+        //         break
+        //     } 
+        // }
+        
+    
+
+    </script>
+</body>
+</html>
